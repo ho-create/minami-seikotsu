@@ -4,92 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>泉中央みなみ整骨院 | 院長 石井貴光</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&family=Noto+Sans+JP:wght@300;500;700;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/scrollreveal"></script>
     <style>
-        :root { 
-            --main-black: #050505; 
-            --sub-white: #ffffff; 
-            --accent-green: #22c55e;
-        }
-        /* 文字が表示されない問題を解決する根幹設定 */
-        body { 
-            background-color: var(--main-black); 
-            color: var(--sub-white) !important; 
-            font-family: 'Noto Sans JP', sans-serif;
-            margin: 0; padding: 0; 
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+        /* 1. 基本設計：絶対に文字を背景に沈ませない */
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --accent: #22c55e; /* NEC風の鮮やかなグリーン */
         }
         
-        /* 全てのテキストが背景より手前に来るよう強制 */
-        h1, h2, h3, h4, p, span, a {
-            position: relative;
-            z-index: 10;
-            opacity: 1 !important; /* 万が一アニメーションが失敗しても表示させる */
-        }
-
-        .font-impact { font-family: 'Outfit', sans-serif; font-weight: 900; }
-        .font-serif { font-family: 'Shippori Mincho', serif; }
-
-        /* 30スクロールを実現するNEC風の広大な余白 */
-        section { padding: 220px 0; position: relative; width: 100%; clear: both; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-
-        /* 洗練されたブランクスペース（ダサくない画像枠） */
-        .photo-blank {
-            width: 100%; aspect-ratio: 16 / 9; background: #111;
-            border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;
-            margin: 100px 0;
-        }
-        .photo-blank::before { content: "VISUAL ASSET"; font-family: 'Outfit'; font-size: 10px; letter-spacing: 1em; opacity: 0.2; }
-
-        /* 白背景セクション：文字化け・消失を完全防止 */
-        .section-light { background-color: #ffffff !important; color: #000000 !important; }
-        .section-light h2, .section-light p, .section-light span, .section-light h4 { color: #000000 !important; }
-        .section-light .photo-blank { background: #f0f0f0; border-color: #ddd; }
-        .section-light .photo-blank::before { color: #000; opacity: 0.3; }
-
-        /* スマホ追従型CTA：親指一本で予約 */
-        .fixed-cta {
-            position: fixed; bottom: 0; left: 0; width: 100%; z-index: 9999;
-            background: var(--accent-green); color: #000;
-            padding: 24px; text-align: center; font-family: 'Outfit'; font-weight: 900;
-            text-decoration: none; font-size: 1.1rem; letter-spacing: 0.2em;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
-        }
-
-        .section-title { font-size: clamp(3rem, 12vw, 9rem); line-height: 0.9; margin-bottom: 100px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* ScrollReveal用：初期状態を少しだけ透明にするが、JS失敗時は見えるように設定 */
-        .reveal { visibility: visible; }
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* 2. NEC風ダイナミック・タイポグラフィ */
+        .impact-text {
+            font-size: clamp(3.5rem, 15vw, 10rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
+
+        .serif-text {
+            font-family: "Shippori Mincho", "Yu Mincho", "MS PMincho", serif;
+            font-weight: 800;
+        }
+
+        /* 3. 30スクロールを実現する広大な余白 */
+        section {
+            padding: 15vh 24px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 4. 白背景セクション：視認性100%強制 */
+        .light-section {
+            background-color: var(--white) !important;
+            color: var(--black) !important;
+        }
+
+        /* 5. 洗練されたブランクスペース（写真枠） */
+        .photo-space {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #111;
+            margin: 60px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .light-section .photo-space {
+            background-color: #f0f0f0;
+            border-color: #ddd;
+        }
+        .photo-space::after {
+            content: "VISUAL ASSET";
+            font-size: 10px;
+            letter-spacing: 0.5em;
+            opacity: 0.2;
+        }
+
+        /* 6. スマホ追従型CTA（固定ボタン） */
+        .sticky-btn {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--accent);
+            color: var(--black);
+            text-align: center;
+            padding: 24px;
+            font-weight: 900;
+            text-decoration: none;
+            z-index: 1000;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* 7. アニメーション（ライブラリ不使用、CSSのみで実行） */
+        .fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 補助的な装飾 */
+        .accent-bar { width: 60px; height: 8px; background-color: var(--accent); margin-bottom: 30px; }
+        .sub-title { font-size: 1rem; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 20px; }
+
     </style>
 </head>
 <body>
 
-    <header class="fixed top-0 w-full z-[100] p-8 flex justify-between items-center mix-blend-difference">
-        <div class="font-impact text-2xl tracking-tighter text-white">ISHII <span class="text-[var(--accent-green)]">TAKAMITSU</span></div>
-    </header>
+    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="sticky-btn">ONLINE BOOKING</a>
 
-    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="fixed-cta">RESERVE / ONLINE BOOKING</a>
-
-    <section class="h-screen flex items-center bg-black">
-        <div class="container">
-            <h1 class="font-impact section-title reveal">痛みの、<br><span class="text-[var(--accent-green)]">終焉。</span></h1>
-            <p class="font-serif text-2xl md:text-4xl reveal italic">泉中央みなみ整骨院</p>
+    <section>
+        <div class="container fade-in">
+            <p class="sub-title">ISHII TAKAMITSU</p>
+            <h1 class="impact-text">痛みの、<br><span style="color: var(--accent);">終焉。</span></h1>
+            <p class="serif-text" style="font-size: 1.5rem; margin-top: 40px;">泉中央みなみ整骨院</p>
         </div>
     </section>
 
-    <section class="section-light">
+    <section class="light-section">
+        <div class="container fade-in">
+            <div class="accent-bar"></div>
+            <h2 class="serif-text" style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 60px;">「回数券を売らない」<br>一期一会の真剣勝負を、<br>ぜんぶやる。</h2>
+            <div class="photo-space"></div>
+            <div style="max-width: 700px; font-size: 1.2rem; font-weight: 500;">
+                <p style="margin-bottom: 40px;">当院は回数券の販売を行っておりません。理由は、一回一回の施術に責任を持ち、その時のベストを尽くしたいと考えているからです。</p>
+                <p style="opacity: 0.7;">丁寧なカウンセリングで一人ひとりのお悩みの原因を突き止め、改善へと導きます。国家資格保持者・石井貴光が、あなたの身体を再起動させます。</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
         <div class="container">
-            <h2 class="font-impact text-5xl md:text-8xl mb-20 uppercase reveal">Philosophy</h2>
-            <div class="photo-blank reveal"></div>
-            <div class="max-w-4xl reveal">
-                <p class="font-serif text-3xl md:text-6xl leading-tight mb-20">「回数券を売らない」<br>一期一会の真剣勝負を、<br>ぜんぶやる。</p>
-                <div class="grid md:grid-cols-2 gap-20">
-                    <p class="text-xl font-bold leading-loose">当院は回数券の販売を行っておりません。理由は、一回一回の施術に責任を持ち、その時のベストを尽くしたいと考えているからです。</p>
-                    <p class="text-lg leading-loose opacity-70">丁寧なカウンセリングで一人ひとりのお悩みの原因を突き止め、改善へと導きます。宮城県仙台市泉区上谷刈。国家資格保持者・石井貴光が、あなたの身体を再起動させます。</p>
+            <h2 class="impact-text" style="opacity: 0.1; font-size: 6rem;">ACUTE</h2>
+            <h3 class="serif-text" style="font-size: 2.5rem; color: var(--accent); margin-top: -40px; margin-bottom: 40px;">ぎっくり腰が、<br>その場で楽になる理由。</h3>
+            <div class="photo-space"></div>
+            <p style="font-size: 1.2rem; color: #999; margin-bottom: 40px;">手技では届かない深部へ直接エネルギーを届け、炎症を沈静化。ブログではその検査プロセスを公開中。</p>
+            <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color: var(--accent); text-decoration: none; font-weight: 900; border-bottom: 2px solid var(--accent);">READ BLOG</a>
+        </div>
+    </section>
+
+    <section class="light-section">
+        <div class="container">
+            <h2 class="impact-text" style="opacity: 0.1; font-size: 6rem;">MATERNITY</h2>
+            <h3 class="serif-text" style="font-size: 2.5rem; margin-top: -40px; margin-bottom: 40px;">産後の違和感を、<br>当たり前にしないで。</h3>
+            <div class="photo-space"></div>
+            <p style="font-size: 1.2rem; margin-bottom: 40px;">ベビーカー入室可能な完全個室。産後1ヶ月から始めるべき骨盤ケアの真実。石井院長がブログに込めた想い。</p>
+            <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color: var(--black); text-decoration: none; font-weight: 900; border-bottom: 2px solid var(--black);">LEARN MORE</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="impact-text" style="opacity: 0.1; font-size: 6rem;">CHRONIC</h2>
+            <h3 class="serif-text" style="font-size: 2.5rem; color: var(--accent); margin-top: -40px; margin-bottom: 40px;">肩こりの正体は、<br>「首」にはありません。</h3>
+            <div class="photo-space"></div>
+            <p style="font-size: 1.2rem; color: #999; margin-bottom: 40px;">揉んでも戻る痛み。ハイボルト検査が導き出す「真犯人」の特定。あなたが納得するまで説明します。</p>
+            <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color: var(--accent); text-decoration: none; font-weight: 900; border-bottom: 2px solid var(--accent);">VIEW STORY</a>
+        </div>
+    </section>
+
+    <section class="light-section">
+        <div class="container">
+            <h2 class="impact-text">PRICE.</h2>
+            <div style="margin-top: 80px; border-top: 4px solid var(--black); padding-top: 40px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px;">
+                    <p class="serif-text" style="font-size: 2rem;">全身オーダーメイド 75分</p>
+                    <p class="impact-text" style="font-size: 4rem; color: var(--accent) !important;">¥5,980</p>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <p class="serif-text" style="font-size: 2rem;">オーダーメイド 45分</p>
+                    <p class="impact-text" style="font-size: 4rem; color: var(--accent) !important;">¥2,980</p>
                 </div>
             </div>
         </div>
@@ -97,130 +184,29 @@
 
     <section>
         <div class="container">
-            <h2 class="font-impact section-title reveal opacity-10">01. ACUTE</h2>
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="reveal">
-                    <p class="text-[var(--accent-green)] font-impact mb-6 tracking-widest">LATEST BLOG</p>
-                    <h3 class="font-serif text-3xl md:text-5xl mb-12 italic">「ぎっくり腰」が、<br>その場で楽になる理由。</h3>
-                    <p class="text-gray-400 text-lg leading-loose mb-12">突然襲う激痛。ハイボルトを用いた施術では、手技では届かない深部へ直接エネルギーを届け、炎症を沈静化。ブログではその検査プロセスを公開中。</p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="font-impact text-xs tracking-widest border border-white/20 px-10 py-5 hover:bg-white hover:text-black transition">READ MORE</a>
-                </div>
-                <div class="photo-blank reveal"></div>
+            <h2 class="impact-text">ACCESS.</h2>
+            <div class="photo-space"></div>
+            <p style="font-size: 1.5rem; margin-bottom: 20px;">〒981-3131<br>宮城県仙台市泉区上谷刈３丁目６－２５<br>カヤバプラザ弐番館１０２</p>
+            <p style="opacity: 0.5;">泉中央駅 徒歩12分 / 駐車場2台完備</p>
+        </div>
+    </section>
+
+    <section class="light-section">
+        <div class="container">
+            <h2 class="impact-text" style="font-size: 4rem;">Q&A.</h2>
+            <div style="margin-top: 60px;">
+                <p style="font-weight: 900; font-size: 1.5rem; color: var(--accent) !important; margin-bottom: 10px;">Q. 駐車場はありますか？</p>
+                <p style="font-size: 1.2rem; margin-bottom: 40px;">A. はい。店舗前に2台分ございます。</p>
+                <p style="font-weight: 900; font-size: 1.5rem; color: var(--accent) !important; margin-bottom: 10px;">Q. クレジットカードは使えますか？</p>
+                <p style="font-size: 1.2rem;">A. はい、各種カード・QR決済に対応しております。</p>
             </div>
         </div>
     </section>
 
-    <section class="section-light">
-        <div class="container">
-            <h2 class="font-impact text-5xl md:text-8xl mb-20 uppercase reveal">Maternity</h2>
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="photo-blank md:order-1 order-2 reveal"></div>
-                <div class="md:order-2 order-1 reveal">
-                    <h3 class="font-serif text-3xl md:text-5xl mb-12 italic">産後の違和感を、<br>当たり前にしないで。</h3>
-                    <p class="text-lg leading-loose mb-12">ベビーカー入室可能な完全個室。産後1ヶ月から始めるべき骨盤ケアの真実。石井院長がブログに込めた、ママへの想い。</p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="font-impact text-xs tracking-widest border border-black/20 px-10 py-5 hover:bg-black hover:text-white transition">LEARN MORE</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h2 class="font-impact section-title reveal opacity-10">03. CHRONIC</h2>
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="reveal">
-                    <h3 class="font-serif text-3xl md:text-5xl mb-12 italic">肩こりの正体は、<br>「首」にはありません。</h3>
-                    <p class="text-gray-400 text-lg leading-loose mb-12">揉んでも戻る痛み。ハイボルト検査が導き出す「真犯人」の特定。あなたが納得するまで説明し、根本からの変化を約束します。</p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="font-impact text-xs tracking-widest border border-white/20 px-10 py-5 hover:bg-white hover:text-black transition">VIEW ARTICLE</a>
-                </div>
-                <div class="photo-blank reveal"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-light">
-        <div class="container">
-            <h2 class="font-impact text-5xl md:text-8xl mb-32 uppercase reveal">Expertise</h2>
-            <div class="grid md:grid-cols-3 gap-16">
-                <div class="reveal">
-                    <div class="photo-blank !m-0 mb-10"></div>
-                    <h4 class="font-serif text-2xl mb-6">完全個室制</h4>
-                    <p class="opacity-60 text-lg">他の方の目を気にせず、リラックスできる「聖域」を提供。ベビーカー入室OK。</p>
-                </div>
-                <div class="reveal">
-                    <div class="photo-blank !m-0 mb-10"></div>
-                    <h4 class="font-serif text-2xl mb-6">国家資格保持</h4>
-                    <p class="opacity-60 text-lg">解剖学・生理学に基づいた根拠のある施術。石井院長がマンツーマンで担当。</p>
-                </div>
-                <div class="reveal">
-                    <div class="photo-blank !m-0 mb-10"></div>
-                    <h4 class="font-serif text-2xl mb-6">駐車場完備</h4>
-                    <p class="opacity-60 text-lg">仙台市泉区上谷刈。お車でも、泉中央駅徒歩12分からでもアクセス良好。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h2 class="font-impact section-title reveal">INVESTMENT.</h2>
-            <div class="space-y-16">
-                <div class="border-b border-white/10 pb-16 reveal">
-                    <div class="flex justify-between items-end mb-8">
-                        <h4 class="font-serif text-3xl md:text-6xl">全身オーダーメイド 75分</h4>
-                        <p class="font-impact text-5xl md:text-8xl text-[var(--accent-green)]">¥5,980</p>
-                    </div>
-                </div>
-                <div class="border-b border-white/10 pb-16 reveal">
-                    <div class="flex justify-between items-end mb-8">
-                        <h4 class="font-serif text-3xl md:text-6xl">オーダーメイド 45分</h4>
-                        <p class="font-impact text-5xl md:text-8xl text-[var(--accent-green)]">¥2,980</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-light">
-        <div class="container">
-            <h2 class="font-impact text-5xl md:text-8xl mb-32 uppercase reveal">Q & A</h2>
-            <div class="space-y-24 max-w-4xl reveal">
-                <div class="border-b border-black/10 pb-12">
-                    <p class="font-impact text-3xl text-[var(--accent-green)] mb-6">Q. 駐車場はありますか？</p>
-                    <p class="text-2xl leading-loose">A. はい。店舗前に駐車場を2台分完備しております。お車で安心してお越しください。</p>
-                </div>
-                <div class="border-b border-black/10 pb-12">
-                    <p class="font-impact text-3xl text-[var(--accent-green)] mb-6">Q. 当日の予約も可能ですか？</p>
-                    <p class="text-2xl leading-loose">A. 空きがあれば可能です。24時間WEB予約から最新の状況を確認いただけます。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-40 bg-black text-center border-t border-white/5">
-        <div class="container">
-            <h2 class="font-impact text-6xl md:text-[150px] mb-20 opacity-5">ISHII</h2>
-            <p class="font-serif text-xl opacity-40">宮城県仙台市泉区上谷刈3-6-25 / 10:00 - 20:00 / 日曜定休</p>
-            <p class="font-impact text-[10px] tracking-[1em] opacity-10 mt-20">© 2026 IZUMICHUO MINAMI. ALL RIGHTS RESERVED.</p>
-        </div>
+    <footer style="padding: 100px 24px 200px; text-align: center;">
+        <h2 class="impact-text" style="opacity: 0.05;">ISHII</h2>
+        <p style="opacity: 0.3; margin-top: 40px; letter-spacing: 0.2em;">© 2026 IZUMICHUO MINAMI SEIKOTSUIN</p>
     </footer>
 
-    <script>
-        // 文字消失を防ぐため、非常に慎重なアニメーション設定
-        try {
-            ScrollReveal().reveal('.reveal', { 
-                distance: '60px', 
-                duration: 1500, 
-                easing: 'cubic-bezier(0.16, 1, 0.3, 1)', 
-                origin: 'bottom', 
-                interval: 200, 
-                opacity: 0, 
-                scale: 1, /* スケール変更によるチラつきを防止 */
-                cleanup: true 
-            });
-        } catch (e) {
-            console.error("ScrollReveal failed, but text is visible.");
-        }
-    </script>
 </body>
 </html>
