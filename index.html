@@ -6,110 +6,112 @@
     <title>泉中央みなみ整骨院 | 院長 石井貴光</title>
     <style>
         :root {
-            --black: #0a0a0a;
+            --black: #000000;
             --white: #ffffff;
-            --accent: #1aff00; /* 閃光のようなグリーン */
-            --soft-gray: #f7f7f7;
+            --accent: #15ff00; /* 治療の火花を散らすネオングリーン */
+            --gray: #111111;
         }
 
-        /* リセット & 基盤 */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html { scroll-behavior: smooth; }
+        
+        /* スマホでの意図しない改行を阻止する魔法 */
+        .keep-phrase { display: inline-block; word-break: keep-all; overflow-wrap: anywhere; }
+
         body {
             background-color: var(--black);
             color: var(--white);
-            font-family: "Shippori Mincho", "Yu Mincho", serif;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             overflow-x: hidden;
-            line-height: 1.8;
+            line-height: 1.4;
         }
 
-        /* 文章の「意味の塊」を守り、スマホ改行の事故を防ぐ */
-        .keep-block { display: inline-block; word-break: keep-all; }
-
-        /* 背景：次元の歪みを表現するデコレーション */
-        .dim-text {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            font-size: 30vw; font-weight: 900; color: rgba(255,255,255,0.01);
-            z-index: 0; pointer-events: none; display: flex; align-items: center;
-            justify-content: center; font-family: sans-serif;
+        /* 遊び心：背景を流れる巨大なテキスト */
+        .bg-marquee {
+            position: fixed; top: 50%; left: 0; width: 200%; font-size: 30vh;
+            font-weight: 900; color: rgba(255,255,255,0.02);
+            white-space: nowrap; pointer-events: none; z-index: 0;
+            transform: translateY(-50%) rotate(-5deg);
         }
 
-        /* レイアウト：圧倒的な余白と深度 */
-        section { min-height: 120vh; padding: 20vh 8vw; position: relative; z-index: 10; display: flex; align-items: center; }
-        .container { width: 100%; max-width: 1400px; margin: 0 auto; }
+        section { min-height: 100vh; padding: 15vh 10vw; position: relative; z-index: 10; display: flex; align-items: center; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; }
 
-        /* 視覚的フック：遊び心のあるグリッド */
-        .grid-line { position: absolute; background: rgba(255,255,255,0.05); }
-        .v-line { width: 1px; height: 100%; top: 0; left: 50%; }
-        .h-line { height: 1px; width: 100%; left: 0; top: 50%; }
-
-        /* 文字：ハイエンド・タイポグラフィ */
-        .hero-title { font-size: clamp(4rem, 20vw, 18rem); font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; font-family: sans-serif; }
-        .sub-title { font-size: 1rem; letter-spacing: 0.8em; opacity: 0.4; text-transform: uppercase; margin-bottom: 40px; }
-
-        /* ブランク：影と光をデザインした枠 */
-        .visual-canvas {
-            width: 100%; aspect-ratio: 16 / 11; background: #111;
-            position: relative; overflow: hidden; margin: 80px 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        /* デザイン性を高めるタイポグラフィ */
+        .h-large { 
+            font-size: clamp(3rem, 15vw, 12rem); font-weight: 900; line-height: 0.85; letter-spacing: -0.05em; 
+            margin-bottom: 40px;
         }
-        .visual-canvas:hover { transform: scale(0.98); }
-        .visual-canvas::after { content: "LENS OF ISHII"; position: absolute; bottom: 20px; right: 20px; font-size: 9px; letter-spacing: 0.3em; opacity: 0.2; }
+        .h-medium { font-family: serif; font-size: clamp(1.8rem, 6vw, 5rem); font-weight: 800; margin-bottom: 30px; }
 
-        /* テーマ：白背景の品格（絶対視認性） */
-        .theme-white { background-color: var(--soft-gray); color: var(--black); }
-        .theme-white .hero-title, .theme-white .sub-title { color: var(--black) !important; }
-        .theme-white .visual-canvas { background: #e0e0e0; border-color: rgba(0,0,0,0.1); }
+        /* 洗練されたブランク：歪むプレースホルダー */
+        .art-blank {
+            width: 100%; aspect-ratio: 1 / 1.2; background: var(--gray);
+            border: 1px solid rgba(255,255,255,0.1); position: relative;
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex; align-items: flex-end; padding: 20px;
+        }
+        .art-blank:active { transform: scale(0.98) skewX(1deg); border-color: var(--accent); }
+        .art-blank::before { content: "VISUAL ASSET"; font-size: 9px; letter-spacing: 0.5em; opacity: 0.3; }
 
-        /* 追従型UI：360度どこからでも予約 */
-        .btn-orbit {
-            position: fixed; bottom: 40px; right: 40px; z-index: 1000;
-            width: 100px; height: 100px; border: 1px solid var(--accent);
+        /* 多彩なセクション背景 */
+        .light-theme { background: var(--white); color: var(--black); }
+        .light-theme .h-large, .light-theme .h-medium { color: var(--black); }
+
+        /* 追従CTA：遊び心のあるデザイン */
+        .cta-floating {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            width: 80px; height: 80px; background: var(--accent);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; background: transparent; transition: 0.4s;
-            overflow: hidden;
+            text-decoration: none; box-shadow: 0 10px 30px rgba(21, 255, 0, 0.3);
+            transition: 0.4s;
         }
-        .btn-orbit::before {
-            content: "RESERVE"; color: var(--accent); font-size: 10px; font-weight: 900;
-            letter-spacing: 0.2em; animation: rotateText 10s linear infinite;
+        .cta-floating span { 
+            color: #000; font-weight: 900; font-size: 10px; text-align: center; line-height: 1; 
+            transform: rotate(-15deg);
         }
-        @keyframes rotateText { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .btn-orbit:hover { background: var(--accent); }
-        .btn-orbit:hover::before { color: #000; }
+        .cta-floating:hover { transform: scale(1.1) rotate(15deg); }
 
-        /* 30スクロールを支えるアニメーション */
-        .reveal { opacity: 0; transform: translateY(60px); transition: 1.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* スクロールに応じたフェード */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .is-visible { opacity: 1; transform: translateY(0); }
 
+        .v-line { width: 2px; height: 100px; background: var(--accent); margin-bottom: 30px; }
     </style>
 </head>
 <body>
 
-    <div class="dim-text">PHILOSOPHY</div>
+    <div class="bg-marquee">TAKAMITSU ISHII TAKAMITSU ISHII</div>
 
-    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-orbit"></a>
+    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="cta-floating">
+        <span>BOOK<br>NOW</span>
+    </a>
 
     <section>
-        <div class="grid-line v-line"></div>
         <div class="container">
-            <p class="sub-title reveal">Izumichuo Minami</p>
-            <h1 class="hero-title reveal">
-                <span class="keep-block">痛みの、</span><br>
-                <span class="keep-block" style="color:var(--accent)">終焉。</span>
+            <div class="v-line reveal"></div>
+            <h1 class="h-large reveal">
+                <span class="keep-phrase">痛みの、</span><br>
+                <span class="keep-phrase text-accent" style="color:var(--accent)">終焉。</span>
             </h1>
-            <p class="reveal" style="margin-top: 60px; font-size: 1.2rem; opacity: 0.6;">石井貴光 | 国家資格保持者としての矜持</p>
+            <p class="h-medium reveal" style="opacity: 0.6; font-family: sans-serif; font-size: 1rem; letter-spacing: 0.5em;">IZUMICHUO MINAMI</p>
         </div>
     </section>
 
-    <section class="theme-white">
+    <section class="light-theme">
         <div class="container">
-            <h2 class="hero-title reveal" style="font-size: 10vw;">TRUTH.</h2>
-            <div class="visual-canvas reveal"></div>
-            <div style="max-width: 800px; margin-left: auto;">
-                <h3 class="keep-block reveal" style="font-size: 2.5rem; margin-bottom: 60px;">「回数券を売らない」という、<br>私の誠実。</h3>
-                <p class="reveal" style="font-size: 1.2rem; line-height: 2.2;">
-                    多くの整骨院で見られる回数券の販売。当院は、それをあえて捨てました。一回一回の施術に最大限の責任を持ちたい。通わせることが目的ではなく、一日でも早く卒業していただくこと。石井貴光が約束するのは、一期一会の真剣勝負です。
+            <h2 class="h-medium reveal">
+                <span class="keep-phrase">「回数券を</span>
+                <span class="keep-phrase">売らない」</span><br>
+                <span class="keep-phrase" style="color:var(--accent)">私の誠実。</span>
+            </h2>
+            <div class="art-blank reveal" style="background: #eee; border-color: #ddd;"></div>
+            <div style="margin-top: 60px;">
+                <p class="reveal" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 40px; line-height: 1.6;">
+                    <span class="keep-phrase">一回一回の施術に、</span><br>
+                    <span class="keep-phrase">責任のすべてを。</span>
+                </p>
+                <p class="reveal" style="font-size: 1rem; opacity: 0.7; max-width: 600px;">
+                    経営の効率化よりも、あなたの身体が「卒業」することを最優先する。それが石井貴光のスタイルです。最短距離での改善。それこそが、私が提供する芸術です。
                 </p>
             </div>
         </div>
@@ -117,53 +119,53 @@
 
     <section>
         <div class="container">
-            <h2 class="hero-title reveal" style="opacity: 0.05;">BLOG.</h2>
+            <p class="h-large reveal" style="opacity: 0.05; margin-bottom: 0;">BLOG</p>
             
-            <div style="margin-bottom: 400px;">
-                <div class="visual-canvas reveal"></div>
-                <div class="reveal">
-                    <p class="sub-title" style="color:var(--accent); opacity: 1;">#01 ACUTE CARE</p>
-                    <h4 class="keep-block" style="font-size: 3rem; margin-bottom: 40px;">ぎっくり腰が、<br>その場で楽になる理由。</h4>
-                    <p style="max-width: 600px; opacity: 0.7; margin-bottom: 40px;">ハイボルト（特殊電気）は、神経の悲鳴を読み解く装置です。深層に眠る「本当の炎症」を特定し、その場で再起動させる。ブログではその具体的な改善プロセスを詳述しています。</p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color:var(--accent); text-decoration: none; border-bottom: 1px solid;">記事の全文を精査する</a>
-                </div>
+            <div style="margin-bottom: 200px;">
+                <p class="reveal" style="color:var(--accent); font-weight: 900; margin-bottom: 20px;">CASE 01: ACUTE</p>
+                <h3 class="h-medium reveal"><span class="keep-phrase">ぎっくり腰が、</span><br><span class="keep-phrase">その場で楽になる理由。</span></h3>
+                <div class="art-blank reveal"></div>
+                <p class="reveal" style="opacity: 0.6; margin-bottom: 30px;">
+                    ハイボルト（特殊電気）の深層アプローチ。それは単なる治療ではなく、神経との対話です。炎症を沈静化し、可動域を即座に復元する。その実録をブログで公開。
+                </p>
+                <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="reveal" style="color:var(--accent); text-decoration: none; font-weight: 900; border-bottom: 1px solid;">READ ARTICLE</a>
             </div>
 
-            <div style="margin-bottom: 400px;">
-                <div class="visual-canvas reveal" style="margin-left: auto; width: 80%;"></div>
-                <div class="reveal" style="text-align: right;">
-                    <p class="sub-title" style="color:var(--accent); opacity: 1;">#02 MOM'S SANCTUARY</p>
-                    <h4 class="keep-block" style="font-size: 3rem; margin-bottom: 40px;">産後の違和感を、<br>当たり前にしないで。</h4>
-                    <p style="max-width: 600px; opacity: 0.7; margin-bottom: 40px; margin-left: auto;">ベビーカーごと入室できる完全個室。ママの身体は、家族の未来を支える資本です。産後1ヶ月から始めるべき骨盤ケアの真実を、院長自らブログに綴りました。</p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color:var(--accent); text-decoration: none; border-bottom: 1px solid;">想いの全文を読み解く</a>
-                </div>
+            <div style="margin-bottom: 200px;">
+                <p class="reveal" style="color:var(--accent); font-weight: 900; margin-bottom: 20px;">CASE 02: MATERNITY</p>
+                <h3 class="h-medium reveal"><span class="keep-phrase">産後の違和感を、</span><br><span class="keep-phrase">当たり前にしないで。</span></h3>
+                <div class="art-blank reveal"></div>
+                <p class="reveal" style="opacity: 0.6; margin-bottom: 30px;">
+                    ベビーカー入室可能な完全個室。産後1ヶ月から始めるべき骨盤ケアの真実。石井院長がブログに込めた、全てのママへのメッセージ。
+                </p>
+                <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="reveal" style="color:var(--accent); text-decoration: none; font-weight: 900; border-bottom: 1px solid;">LEARN MORE</a>
             </div>
 
             <div>
-                <div class="visual-canvas reveal"></div>
-                <div class="reveal">
-                    <p class="sub-title" style="color:var(--accent); opacity: 1;">#03 CHRONIC CAUSE</p>
-                    <h4 class="keep-block" style="font-size: 3rem; margin-bottom: 40px;">肩こりの正体は、<br>「首」にはありません。</h4>
-                    <p style="max-width: 600px; opacity: 0.7; margin-bottom: 40px;">揉んでも戻る。それは「原因」が別の場所に潜んでいるからです。ハイボルト検査が暴く、姿勢と足首の相関関係。あなたが納得するまで、私は逃げません。</p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color:var(--accent); text-decoration: none; border-bottom: 1px solid;">分析の全文を確認する</a>
-                </div>
+                <p class="reveal" style="color:var(--accent); font-weight: 900; margin-bottom: 20px;">CASE 03: CHRONIC</p>
+                <h3 class="h-medium reveal"><span class="keep-phrase">肩こりの正体は、</span><br><span class="keep-phrase">「首」にはありません。</span></h3>
+                <div class="art-blank reveal"></div>
+                <p class="reveal" style="opacity: 0.6; margin-bottom: 30px;">
+                    揉んでも戻る。それは「原因」が別の場所に潜んでいるからです。ハイボルト検査が導き出す「真犯人」の特定。あなたが納得するまで語ります。
+                </p>
+                <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="reveal" style="color:var(--accent); text-decoration: none; font-weight: 900; border-bottom: 1px solid;">VIEW ARCHIVES</a>
             </div>
         </div>
     </section>
 
-    <section class="theme-white">
+    <section class="light-theme">
         <div class="container">
-            <h2 class="hero-title reveal" style="text-align: right;">DETAIL.</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 100px; margin-top: 100px;">
+            <h2 class="h-large reveal" style="font-size: 10vw;">EXPERTISE.</h2>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 80px;">
                 <div class="reveal">
-                    <h4 style="font-size: 2rem; margin-bottom: 30px;">01. 完全個室</h4>
-                    <div class="visual-canvas"></div>
-                    <p>誰にも邪魔されない聖域。ベビーカー入室も標準対応。ここは、あなたがあなたに戻るための場所です。</p>
+                    <h4 class="h-medium" style="font-size: 2rem;">01. 完全個室</h4>
+                    <div class="art-blank" style="aspect-ratio: 16/9; background: #ddd;"></div>
+                    <p style="opacity: 0.7; margin-top: 20px;">プライバシーが守られた聖域。ベビーカー入室も標準対応です。</p>
                 </div>
                 <div class="reveal">
-                    <h4 style="font-size: 2rem; margin-bottom: 30px;">02. 国家資格</h4>
-                    <div class="visual-canvas"></div>
-                    <p>石井院長がすべてのカウンセリングと施術を直接担当。解剖学に裏打ちされた論理的なアプローチ。</p>
+                    <h4 class="h-medium" style="font-size: 2rem;">02. 国家資格</h4>
+                    <div class="art-blank" style="aspect-ratio: 16/9; background: #ddd;"></div>
+                    <p style="opacity: 0.7; margin-top: 20px;">解剖学的根拠に基づいた施術。石井院長がすべての工程を直接担当します。</p>
                 </div>
             </div>
         </div>
@@ -171,51 +173,47 @@
 
     <section>
         <div class="container">
-            <h2 class="hero-title reveal" style="opacity: 0.1;">PRICE.</h2>
-            <div style="margin-top: 100px;">
-                <div class="reveal" style="display: flex; justify-content: space-between; align-items: flex-end; padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                    <p style="font-size: 2rem;">全身オーダーメイド整体 <span style="font-size: 1rem; opacity: 0.4;">75min</span></p>
-                    <p class="hero-title" style="color:var(--accent); font-size: 8vw;">¥5,980</p>
-                </div>
-                <div class="reveal" style="display: flex; justify-content: space-between; align-items: flex-end; padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                    <p style="font-size: 2rem;">オーダーメイド整体 <span style="font-size: 1rem; opacity: 0.4;">45min</span></p>
-                    <p class="hero-title" style="color:var(--accent); font-size: 8vw;">¥2,980</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="theme-white">
-        <div class="container">
-            <h2 class="hero-title reveal">FAQ.</h2>
-            <div style="max-width: 800px; margin-top: 80px;">
+            <h2 class="h-large reveal" style="text-align: right;">PRICE.</h2>
+            <div style="border-top: 1px solid var(--gray); padding-top: 50px;">
                 <div class="reveal" style="margin-bottom: 80px;">
-                    <p style="font-weight: 900; color: var(--accent); margin-bottom: 20px;">Q. 駐車場はありますか？</p>
-                    <p style="font-size: 1.5rem;">A. 店舗前に2台分完備。お車での来院を歓迎します。</p>
+                    <p class="h-medium">全身オーダーメイド <span style="font-family: sans-serif; font-size: 0.8rem; opacity: 0.4;">75min</span></p>
+                    <p class="h-large" style="color:var(--accent)">¥5,980</p>
                 </div>
                 <div class="reveal">
-                    <p style="font-weight: 900; color: var(--accent); margin-bottom: 20px;">Q. 健康保険は使えますか？</p>
-                    <p style="font-size: 1.5rem;">A. 当院は根本改善を目的とした自費施術専門です。最高の技術を提供するため、制限のある保険診療は行いません。</p>
+                    <p class="h-medium">部分オーダーメイド <span style="font-family: sans-serif; font-size: 0.8rem; opacity: 0.4;">45min</span></p>
+                    <p class="h-large" style="color:var(--accent)">¥2,980</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 20vh 8vw; background-color: #000;">
+    <section class="light-theme">
         <div class="container">
-            <h2 class="hero-title reveal" style="opacity: 0.05; margin-bottom: 100px;">ACCESS.</h2>
-            <div class="reveal">
-                <p style="font-size: 2rem; margin-bottom: 20px;">〒981-3131<br>宮城県仙台市泉区上谷刈3-6-25</p>
-                <p style="opacity: 0.5;">泉中央駅 徒歩12分 / 10:00 - 20:00 / 日曜定休</p>
+            <h2 class="h-medium reveal">Q&A.</h2>
+            <div style="max-width: 500px;">
+                <div class="reveal" style="margin-bottom: 60px;">
+                    <p style="font-weight: 900; color: var(--accent); margin-bottom: 10px;">Q. 駐車場はありますか？</p>
+                    <p style="font-size: 1.2rem; font-weight: 700;">A. 店舗前に2台分完備。お車でのご来院を歓迎します。</p>
+                </div>
+                <div class="reveal">
+                    <p style="font-weight: 900; color: var(--accent); margin-bottom: 10px;">Q. 予約は必須ですか？</p>
+                    <p style="font-size: 1.2rem; font-weight: 700;">A. はい。一期一会の真剣勝負を重んじるため、完全予約制としています。</p>
+                </div>
             </div>
         </div>
+    </section>
+
+    <footer style="padding: 100px 10vw; text-align: center; border-top: 1px solid var(--gray);">
+        <h2 class="h-large reveal" style="opacity: 0.03;">ISHII</h2>
+        <p class="reveal" style="font-size: 0.8rem; opacity: 0.4; letter-spacing: 0.5em;">〒981-3131 仙台市泉区上谷刈3-6-25</p>
+        <p class="reveal" style="font-size: 10px; opacity: 0.2; margin-top: 50px;">© 2026 IZUMICHUO MINAMI</p>
     </footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('is-visible');
                 }
             });
         }, { threshold: 0.1 });
