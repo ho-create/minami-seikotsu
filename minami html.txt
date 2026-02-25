@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泉中央みなみ整骨院 | 院長 石井貴光</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@300;500;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root { --accent: #22c55e; --bg-dark: #050707; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-dark); color: #fff; overflow-x: hidden; }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        
+        /* ヒーローエリアの圧倒的な存在感 */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(5,7,7,1)), 
+                        url('https://imgbp.hotp.jp/CSP/sln/H000637500/H000637500_428_321.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* 巨大な透かし文字（VIVA LA風） */
+        .giant-text {
+            position: absolute;
+            font-size: 20vw;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        /* アニメーションの調整 */
+        .reveal { opacity: 0; }
+    </style>
+</head>
+<body>
+
+    <header class="fixed w-full z-50 mix-blend-difference p-8 flex justify-between items-center">
+        <div class="font-oswald text-2xl tracking-[0.2em] text-white">ISHII <span class="text-green-500">TAKAMITSU</span></div>
+        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="border border-white text-white px-8 py-2 text-xs font-bold tracking-widest hover:bg-white hover:text-black transition duration-500 rounded-full">RESERVE</a>
+    </header>
+
+    <section class="hero-section relative">
+        <div class="giant-text">AUTHENTIC</div>
+        <div class="relative z-10 px-4">
+            <span class="font-oswald text-green-500 tracking-[0.5em] text-sm md:text-base block mb-6 reveal">SENDAI IZUMICHUO</span>
+            <h1 class="font-serif text-4xl md:text-8xl mb-8 leading-tight reveal">
+                「痛み」の終焉、<br>その先の日常へ。
+            </h1>
+            <p class="text-sm md:text-xl font-light tracking-widest opacity-60 mb-12 reveal">
+                石井貴光が提供するのは、一時的な緩和ではない。<br>
+                あなたの人生を「再起動」させるための、真実の根本改善。
+            </p>
+            <div class="w-px h-24 bg-gradient-to-b from-green-500 to-transparent mx-auto"></div>
+        </div>
+    </section>
+
+    <section class="py-40 relative bg-[#080a0a]">
+        <div class="giant-text" style="top: 20%; right: -10%;">PHILOSOPHY</div>
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <h3 class="font-serif text-3xl md:text-5xl mb-10 leading-snug">
+                        私は、<br>「回数券」で<br>あなたを縛らない。
+                    </h3>
+                </div>
+                <div class="reveal">
+                    <p class="text-gray-400 text-lg leading-loose">
+                        多くの整骨院が経営のために選ぶ「回数券」という手段を、私はあえて捨てました。一回一回の施術が、石井貴光としての真剣勝負。あなたが「今日変わった」と実感し、自らの意志で次を選ぶ。その信頼関係こそが、最速の改善への近道だと確信しているからです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6">
+        <div class="container mx-auto grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-12 rounded-[2rem] reveal">
+                <div class="font-oswald text-4xl text-green-500 mb-8 underline underline-offset-8 decoration-1">01</div>
+                <h4 class="font-serif text-2xl mb-6">深層10cm、<br>痛みの核を突く。</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    指先では決して届かない、筋肉の最深部。特殊な波動を用いて、長年こびりついた痛みのスイッチを直接オフにします。
+                </p>
+            </div>
+            <div class="glass-card p-12 rounded-[2rem] reveal" style="transition-delay: 0.2s;">
+                <div class="font-oswald text-4xl text-green-500 mb-8 underline underline-offset-8 decoration-1">02</div>
+                <h4 class="font-serif text-2xl mb-6">母である前に、<br>一人の女性として。</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    ベビーカーを横に、お子様の呼吸を感じながら。完全個室は、あなたが「誰かのため」ではなく「自分の体」と向き合うための聖域です。
+                </p>
+            </div>
+            <div class="glass-card p-12 rounded-[2rem] reveal" style="transition-delay: 0.4s;">
+                <div class="font-oswald text-4xl text-green-500 mb-8 underline underline-offset-8 decoration-1">03</div>
+                <h4 class="font-serif text-2xl mb-6">「異常なし」を、<br>論理的に暴く。</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    原因のない痛みはありません。石井先生があなたの生活習慣から不調の正体を特定し、納得のいく言葉で翻訳します。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-60 text-center bg-gradient-to-t from-black to-[#050707]">
+        <div class="reveal">
+            <h3 class="font-serif text-4xl md:text-7xl mb-16">まずは、一度。<br><span class="text-green-500 font-oswald italic">¥2,980-</span></h3>
+            <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="inline-block bg-green-600 hover:bg-white hover:text-black text-white px-20 py-6 rounded-full font-oswald text-xl tracking-widest transition duration-700 shadow-[0_20px_60px_rgba(34,197,94,0.3)]">RESERVE ONLINE</a>
+        </div>
+    </section>
+
+    <footer class="py-32 px-6 border-t border-white/5 text-center">
+        <div class="font-oswald text-5xl mb-12 tracking-tighter">IZUMICHUO MINAMI</div>
+        <div class="grid md:grid-cols-2 text-left max-w-4xl mx-auto gap-12 text-gray-500 text-sm">
+            <div>
+                <p class="font-bold text-white mb-4 tracking-widest uppercase">Location</p>
+                <p>〒981-3131 宮城県仙台市泉区上谷刈3丁目6-25<br>カヤバプラザ弐番館102</p>
+                <p class="mt-4">地下鉄泉中央駅 徒歩12分 / 駐車場2台完備</p>
+            </div>
+            <div>
+                <p class="font-bold text-white mb-4 tracking-widest uppercase">Hours</p>
+                <p>10:00 - 20:00 / 定休日：日曜</p>
+                <p class="mt-4">院長：石井 貴光</p>
+            </div>
+        </div>
+        <div class="mt-32 opacity-20 text-[10px] tracking-[0.5em]">© 2026 IZUMICHUO MINAMI SEIKOTSUIN</div>
+    </footer>
+
+    <script>
+        // スクロール時のふわっとした動きの設定
+        ScrollReveal().reveal('.reveal', { 
+            distance: '60px', 
+            duration: 1500, 
+            easing: 'cubic-bezier(0.5, 0, 0, 1)', 
+            origin: 'bottom',
+            interval: 200 
+        });
+    </script>
+</body>
+</html>
