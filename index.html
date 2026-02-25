@@ -5,267 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>泉中央みなみ整骨院 | 院長 石井貴光</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Outfit:wght@100;400;900&family=Noto+Sans+JP:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&family=Noto+Sans+JP:wght@300;500;700;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         :root { 
-            --accent: #22c55e;       /* アクセントカラー (鮮やかなグリーン) */
-            --bg-dark: #1a1a1a;      /* ダークな背景色 */
-            --text-light: #e0e0e0;   /* 明るいテキスト色 */
-            --text-dark: #333333;    /* 暗いテキスト色 (白背景用) */
-            --border-color: rgba(255, 255, 255, 0.1); /* 罫線色 */
+            --main-black: #0a0a0a; 
+            --sub-white: #ffffff; 
+            --accent-green: #22c55e; /* NEC風のクリーンなグリーンを想起 */
+            --gray-line: rgba(255,255,255,0.1);
         }
         body { 
             font-family: 'Noto Sans JP', sans-serif; 
-            background-color: var(--bg-dark); 
-            color: var(--text-light); 
-            line-height: 1.8; 
+            background-color: var(--main-black); 
+            color: var(--sub-white); 
+            line-height: 1.6; 
             margin: 0; 
-            padding-bottom: 120px; /* 固定CTAのための余白 */
-            overflow-x: hidden; /* 横スクロール禁止 */
+            overflow-x: hidden;
+            word-break: break-all;
         }
-        .font-outfit { font-family: 'Outfit', sans-serif; }
-        .font-serif { font-family: 'Noto Serif JP', serif; }
-        
-        /* 全セクション共通のパディングと中央寄せ */
-        section { 
-            padding: 120px 0; 
-            position: relative; 
-            z-index: 1; /* コンテンツが常に手前に来るように */
+        .font-impact { font-family: 'Outfit', sans-serif; font-weight: 900; line-height: 0.9; }
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+
+        /* 大胆な余白：30スクロールを実現するNEC風スペーシング */
+        section { padding: 180px 0; position: relative; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* NEC風の洗練されたブランクスペース */
+        .photo-placeholder {
+            width: 100%; aspect-ratio: 16 / 9; background: #151515;
+            border: 1px solid var(--gray-line); display: flex; align-items: center; justify-content: center;
+            position: relative; margin: 80px 0;
         }
-        .container { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            padding: 0 24px; 
-            position: relative; 
-            z-index: 10; 
+        .photo-placeholder::before { content: "VISUAL ASSET"; font-family: 'Outfit'; font-size: 10px; letter-spacing: 1em; opacity: 0.2; }
+
+        /* スマホ追従型CTA：ミニマルかつ強烈な視認性 */
+        .sticky-reserve {
+            position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1000;
+            background: var(--accent-green); color: #000;
+            padding: 24px; text-align: center; font-family: 'Outfit'; font-weight: 900;
+            letter-spacing: 0.2em; text-decoration: none; font-size: 1.1rem;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
         }
 
-        /* 追従型CTAボタン (スマホ・PC対応) */
-        .fixed-cta { 
-            position: fixed; 
-            bottom: 0; left: 0; 
-            width: 100%; 
-            z-index: 9999; 
-            padding: 15px 24px; 
-            background: rgba(26, 26, 26, 0.95); 
-            backdrop-filter: blur(10px); 
-            border-top: 1px solid var(--border-color);
-        }
-        .btn-reserve { 
-            display: block; 
-            background: var(--accent); 
-            color: #000 !important; 
-            text-align: center; 
-            padding: 20px; 
-            font-weight: 900; 
-            text-decoration: none; 
-            font-family: 'Outfit'; 
-            letter-spacing: 0.15em; 
-            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn-reserve:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(34, 197, 94, 0.5);
-        }
+        /* 大胆なセクションタイトル */
+        .section-title { font-size: clamp(3rem, 10vw, 8rem); color: var(--sub-white); margin-bottom: 80px; }
+        .accent-box { border-left: 10px solid var(--accent-green); padding-left: 40px; }
 
-        /* ヒーローセクション */
-        .hero { 
-            height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                        url('https://source.unsplash.com/random/1920x1080/?healing,dynamic,ocean') center/cover no-repeat; /* ダイナミックな画像 */
-            text-align: center;
-        }
-        .hero h1 { 
-            font-size: clamp(3rem, 10vw, 7rem); /* レスポンシブな文字サイズ */
-            line-height: 1.1; 
-            letter-spacing: -0.05em; 
-            text-shadow: 0 5px 20px rgba(0,0,0,0.5);
-        }
-        .hero p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            letter-spacing: 0.2em;
-        }
+        .blog-item { border-top: 1px solid var(--gray-line); padding: 80px 0; transition: 0.4s; }
+        .blog-item:hover { background: rgba(255,255,255,0.02); }
 
-        /* 白背景セクション用 */
-        .section-light {
-            background-color: #ffffff;
-            color: var(--text-dark);
-        }
-        .section-light h2, .section-light p, .section-light span {
-            color: var(--text-dark) !important;
-        }
-
-        /* カードデザイン */
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(5px); 
-            border: 1px solid var(--border-color); 
-            padding: 40px; 
-            margin-bottom: 40px; 
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
-        }
-
-        .blog-card { 
-            border-left: 4px solid var(--accent); /* 強調された左ボーダー */
-            padding: 30px; 
-            margin-bottom: 40px; 
-            background: rgba(255,255,255,0.02); 
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .blog-card:hover { 
-            background: rgba(34, 197, 94, 0.05); 
-            transform: translateY(-8px); 
-            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
-        }
-        .blog-card h4 {
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            line-height: 1.4;
-        }
-        .blog-card p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            opacity: 0.8;
-        }
-        .blog-card a {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--accent);
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
-            transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-            letter-spacing: 0.05em;
-        }
-        .blog-card a:hover {
-            opacity: 0.7;
-            letter-spacing: 0.1em;
-        }
-
-        /* 視認性のための文字色調整 */
-        .text-accent { color: var(--accent) !important; }
-        .text-light { color: var(--text-light) !important; }
-        .text-dark { color: var(--text-dark) !important; }
-        .opacity-70 { opacity: 0.7; }
-        .opacity-50 { opacity: 0.5; }
-        
-        /* アニメーションの初期状態 (ScrollReveal用) */
-        .reveal { opacity: 0; transform: translateY(30px); } 
-        .reveal.sr-bottom { opacity: 1; transform: translateY(0); } /* スクロール後の状態 */
+        .reveal { opacity: 0; }
     </style>
 </head>
 <body>
 
-    <header class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center bg-bg-dark bg-opacity-80 backdrop-blur-sm border-b border-border-color">
-        <div class="font-outfit text-xl font-bold tracking-wider text-text-light uppercase">Ishii <span class="text-accent">Takamitsu</span></div>
-        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="text-accent font-outfit text-sm tracking-widest hover:opacity-70 transition">BOOK NOW</a>
+    <header class="fixed top-0 w-full z-50 p-10 flex justify-between items-center mix-blend-difference">
+        <div class="font-impact text-2xl tracking-tighter">ISHII <span class="text-[var(--accent-green)]">TAKAMITSU</span></div>
+        <div class="font-impact text-[10px] tracking-[0.5em] opacity-50 uppercase">Izumichuo Minami</div>
     </header>
 
-    <div class="fixed-cta">
-        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-reserve">24H ONLINE BOOKING</a>
-    </div>
+    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="sticky-reserve">RESERVE NOW / 24H ONLINE</a>
 
-    <section class="hero">
-        <div class="container relative z-20">
-            <p class="font-outfit tracking-[0.8em] text-xs mb-6 opacity-60 reveal delay-100">IZUMICHUO MINAMI SEIKOTSUIIN</p>
-            <h1 class="font-serif text-text-light mb-10 reveal delay-200">痛みの、<br><span class="text-accent italic">終焉。</span></h1>
-            <p class="font-serif italic text-text-light reveal delay-300">院長 石井 貴光</p>
+    <section class="h-screen flex items-center justify-start overflow-hidden">
+        <div class="container relative z-10">
+            <h1 class="font-impact section-title reveal">痛みの、<br><span class="text-[var(--accent-green)]">終焉。</span></h1>
+            <p class="font-serif text-2xl md:text-4xl reveal delay-200">一期一会の真剣勝負を、<br>ぜんぶやる。</p>
         </div>
+        <div class="photo-placeholder absolute right-[-10%] top-[20%] w-2/3 opacity-20 rotate-[-5deg]"></div>
     </section>
 
-    <section class="section-light">
+    <section class="bg-white text-black">
         <div class="container">
-            <h2 class="font-serif text-4xl md:text-6xl mb-12 text-center reveal delay-100">
-                「回数券を売らない」<br>という、<span class="text-accent">私の誠実。</span>
-            </h2>
-            <div class="max-w-3xl mx-auto reveal delay-200">
-                <p class="text-lg md:text-xl text-dark mb-8 border-l-4 border-accent pl-6 leading-relaxed">
-                    当院は、一般的な整骨院で多く見られる回数券の販売を一切行いません。その理由は、一回一回の施術に最大限の責任を持ち、その時の身体にとってのベストを尽くしたいと考えているからです。
-                </p>
-                <p class="text-lg text-dark mb-8">
-                    通い続けることが目的ではなく、一日でも早く患者様の痛みを改善し、健康な日常へと「卒業」していただくこと。それが、国家資格を持つ院長、石井貴光が皆様一人ひとりに約束する、一期一会の真剣勝負です。
-                </p>
-                <p class="text-sm text-gray-600 reveal delay-300">
-                    詳細なカウンセリングで根本原因を突き止め、最適な施術プランを提示。完全個室のプライベート空間で、心身ともにリラックスして施術を受けていただけます。
-                </p>
+            <div class="accent-box reveal">
+                <h2 class="font-impact text-4xl md:text-8xl mb-12 uppercase">Philosophy</h2>
+                <p class="font-serif text-3xl md:text-6xl leading-tight mb-16">「回数券を売らない」<br>それは、改善への最短距離を<br>約束する証。</p>
+            </div>
+            <div class="photo-placeholder !bg-gray-100 !border-gray-200 reveal"></div>
+            <div class="grid md:grid-cols-2 gap-20 reveal">
+                <p class="text-xl leading-loose font-bold">当院は回数券の販売を行っておりません。理由は、一回一回の施術に責任を持ち、その時のベストを尽くしたいと考えているからです。</p>
+                <p class="text-lg leading-loose text-gray-600">丁寧なカウンセリングで一人ひとりのお悩みの原因を突き止め、改善へと導きます。完全個室のプライベート空間。宮城県仙台市泉区上谷刈にて、国家資格保持者・石井貴光が、あなたの身体を再起動させます。</p>
             </div>
         </div>
     </section>
 
     <section>
         <div class="container">
-            <div class="text-center mb-16">
-                <p class="font-outfit text-sm tracking-[0.3em] text-accent mb-4 reveal delay-100 uppercase">From Hotpepper Blog</p>
-                <h3 class="font-serif text-4xl md:text-5xl text-text-light reveal delay-200">最新の知見と、<br>改善の実録。</h3>
-            </div>
-
-            <div class="grid gap-8">
-                <div class="blog-card reveal delay-300">
-                    <h4 class="font-serif text-text-light mb-4">動けないほどのぎっくり腰が、<br>なぜその場で楽になるのか。</h4>
-                    <p class="text-gray-400 mb-6">
-                        突然の激痛に襲われるぎっくり腰。その原因は深層の筋肉の炎症にあります。当院のハイボルト施術は、手技では届かない深部へ電気エネルギーを直接届け、炎症を素早く沈静化。長年の経験と知識に基づき、患者様が「今日、動けるようになる」ことに全力を注ぎます。ブログでは実際の改善事例と、ハイボルトが検査器としても機能する理由を詳しく解説しています。
-                    </p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="text-accent">続きを読む ＞</a>
-                </div>
-
-                <div class="blog-card reveal delay-400">
-                    <h4 class="font-serif text-text-light mb-4">産後の違和感を、<br>「当たり前」にしないでほしい。</h4>
-                    <p class="text-gray-400 mb-6">
-                        出産後の骨盤の開きや抱っこによる腰痛・肩こりなど、ママの身体は極限状態です。「子供がいるから」と自分の身体を後回しにしていませんか？当院はベビーカーをベッド横に置いて施術できる完全個室を完備。産後1ヶ月から始められる安全で効果的な骨盤ケアの秘訣を、石井院長がブログで詳しく綴っています。ママの笑顔が、家族の幸せに繋がると信じています。
-                    </p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="text-accent">続きを読む ＞</a>
-                </div>
-
-                <div class="blog-card reveal delay-500">
-                    <h4 class="font-serif text-text-light mb-4">長年の肩こりの正体は、<br>「首」にはありません。</h4>
-                    <p class="text-gray-400 mb-6">
-                        何年も続く慢性的な肩こり。何度揉んでも一時的で、すぐに戻ってしまうのは、本当の原因が別の場所にあるからです。石井院長はハイボルトの精密な検査機能を駆使し、姿勢、骨盤の歪み、足の着き方までを徹底分析。「痛みの引き金」を特定し、根本原因にアプローチします。「異常なし」と言われた痛みの正体をブログで公開中。納得の説明と確かな変化をぜひご体感ください。
-                    </p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="text-accent">続きを読む ＞</a>
+            <h2 class="font-impact section-title reveal">INSIGHTS.</h2>
+            
+            <div class="blog-item reveal">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <p class="font-impact text-[var(--accent-green)] mb-6">#01 ACUTE CASE</p>
+                        <h3 class="font-serif text-3xl md:text-5xl mb-10 leading-snug">ぎっくり腰が、<br>その場で楽になる理由。</h3>
+                        <p class="text-gray-400 text-lg mb-10 leading-loose">突然襲うぎっくり腰。その正体は深層筋の炎症です。ハイボルトを用いた施術では、手技では届かない深部へ直接エネルギーを届け、炎症を沈静化。ブログではその検査プロセスを公開中。</p>
+                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="font-impact text-xs tracking-widest border border-white/20 px-10 py-4 hover:bg-white hover:text-black transition">READ FULL STORY</a>
+                    </div>
+                    <div class="photo-placeholder"></div>
                 </div>
             </div>
-            <div class="text-center mt-12 reveal delay-600">
-                <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="btn-reserve inline-block px-12 py-4 text-black !important">全ブログ記事を読む</a>
+
+            <div class="blog-item reveal">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="photo-placeholder md:order-1 order-2"></div>
+                    <div class="md:order-2 order-1">
+                        <p class="font-impact text-[var(--accent-green)] mb-6">#02 MATERNITY CARE</p>
+                        <h3 class="font-serif text-3xl md:text-5xl mb-10 leading-snug">産後の違和感を、<br>当たり前にしないで。</h3>
+                        <p class="text-gray-400 text-lg mb-10 leading-loose">「子供がいるから」と諦めて欲しくない。ベビーカー入室可能な完全個室を作った本当の理由と、産後1ヶ月から始めるべき骨盤ケアの真実。石井院長がブログに込めた想い。</p>
+                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="font-impact text-xs tracking-widest border border-white/20 px-10 py-4 hover:bg-white hover:text-black transition">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-item reveal">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <p class="font-impact text-[var(--accent-green)] mb-6">#03 CHRONIC CAUSE</p>
+                        <h3 class="font-serif text-3xl md:text-5xl mb-10 leading-snug">肩こりの正体は、<br>首にありません。</h3>
+                        <p class="text-gray-400 text-lg mb-10 leading-loose">揉んでも戻る痛み。それは「結果」を触っているから。ハイボルト検査が導き出す「真犯人」の特定。あなたが納得するまで説明し、根本からの変化をお約束します。ブログ公開中。</p>
+                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" class="font-impact text-xs tracking-widest border border-white/20 px-10 py-4 hover:bg-white hover:text-black transition">VIEW ARTICLE</a>
+                    </div>
+                    <div class="photo-placeholder"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section-light">
+    <section class="bg-white text-black">
         <div class="container">
-            <h3 class="font-serif text-4xl md:text-5xl text-center mb-16 text-dark reveal delay-100">
-                石井貴光の、<br>譲れない<span class="text-accent">３つのこだわり。</span>
-            </h3>
-            <div class="grid md:grid-cols-3 gap-8 text-dark text-center">
-                <div class="reveal delay-200">
-                    <div class="p-8 border border-gray-200 h-full flex flex-col justify-center">
-                        <p class="font-outfit text-5xl mb-4 text-accent">01</p>
-                        <h4 class="font-serif text-xl md:text-2xl mb-4 text-dark">完全個室のプライベート空間</h4>
-                        <p class="text-gray-600 text-sm">他の方の目を気にせず、心からリラックスして施術を受けていただけます。ベビーカーでの入室も可能です。</p>
-                    </div>
+            <h2 class="font-impact section-title !text-black reveal">EXPERTISE.</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="reveal">
+                    <div class="photo-placeholder !bg-gray-200 !m-0 mb-8"></div>
+                    <h4 class="font-serif text-2xl mb-6">完全個室制</h4>
+                    <p class="text-gray-600">他の方の目を気にせず、心からリラックスできる「聖域」を提供。ベビーカーのまま入室OK。</p>
                 </div>
-                <div class="reveal delay-300">
-                    <div class="p-8 border border-gray-200 h-full flex flex-col justify-center">
-                        <p class="font-outfit text-5xl mb-4 text-accent">02</p>
-                        <h4 class="font-serif text-xl md:text-2xl mb-4 text-dark">国家資格保有者による施術</h4>
-                        <p class="text-gray-600 text-sm">解剖学・生理学に基づいた根拠のある施術で、痛みの根本原因にアプローチ。安心と信頼をお約束します。</p>
-                    </div>
+                <div class="reveal">
+                    <div class="photo-placeholder !bg-gray-200 !m-0 mb-8"></div>
+                    <h4 class="font-serif text-2xl mb-6">国家資格保持</h4>
+                    <p class="text-gray-600">解剖学・生理学に基づいた根拠のある施術。石井院長がマンツーマンですべてを担当。</p>
                 </div>
-                <div class="reveal delay-400">
-                    <div class="p-8 border border-gray-200 h-full flex flex-col justify-center">
-                        <p class="font-outfit text-5xl mb-4 text-accent">03</p>
-                        <h4 class="font-serif text-xl md:text-2xl mb-4 text-dark">丁寧なカウンセリングと説明</h4>
-                        <p class="text-gray-600 text-sm">痛みの原因を患者様自身が理解し、納得していただくことが改善への第一歩。現状と施術方針を明確にお伝えします。</p>
-                    </div>
+                <div class="reveal">
+                    <div class="photo-placeholder !bg-gray-200 !m-0 mb-8"></div>
+                    <h4 class="font-serif text-2xl mb-6">駐車場2台完備</h4>
+                    <p class="text-gray-600">仙台市泉区上谷刈。お車でも、公共交通機関（泉中央駅徒歩12分）でも安心。</p>
                 </div>
             </div>
         </div>
@@ -273,84 +155,58 @@
 
     <section>
         <div class="container">
-            <h4 class="font-serif text-4xl md:text-5xl text-center mb-16 text-text-light reveal delay-100">
-                料金プラン
-            </h4>
-            <div class="space-y-8">
-                <div class="glass-card reveal delay-200">
-                    <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b border-border-color pb-6">
-                        <h5 class="font-serif text-xl md:text-2xl text-text-light mb-4 md:mb-0">全身オーダーメイド整体 75分</h5>
-                        <p class="font-outfit text-4xl md:text-5xl text-accent">¥5,980</p>
+            <h2 class="font-impact section-title reveal">PRICE.</h2>
+            <div class="space-y-12">
+                <div class="border-b border-white/10 pb-12 reveal">
+                    <div class="flex justify-between items-end mb-8">
+                        <h4 class="font-serif text-3xl md:text-5xl">全身オーダーメイド 75分</h4>
+                        <p class="font-impact text-5xl md:text-8xl text-[var(--accent-green)]">¥5,980</p>
                     </div>
-                    <p class="text-gray-400 text-sm">カウンセリングを含めた時間です。お身体の状態に合わせ、手技と特殊電気（ハイボルト等）を組み合わせた最適な施術を提供。根本からの改善を目指します。</p>
+                    <p class="text-gray-400 text-xl">根本改善を望む方に選ばれている、当院の代表プラン。手技とハイボルトの融合。</p>
                 </div>
-                <div class="glass-card reveal delay-300">
-                    <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b border-border-color pb-6">
-                        <h5 class="font-serif text-xl md:text-2xl text-text-light mb-4 md:mb-0">オーダーメイド整体 45分</h5>
-                        <p class="font-outfit text-4xl md:text-5xl text-accent">¥2,980</p>
+                <div class="border-b border-white/10 pb-12 reveal">
+                    <div class="flex justify-between items-end mb-8">
+                        <h4 class="font-serif text-3xl md:text-5xl">オーダーメイド整体 45分</h4>
+                        <p class="font-impact text-5xl md:text-8xl text-[var(--accent-green)]">¥2,980</p>
                     </div>
-                    <p class="text-gray-400 text-sm">カウンセリングを含めた時間です。特に気になる箇所を重点的に施術。お忙しい方や、まずはお試しでという方に最適なコースです。</p>
-                </div>
-            </div>
-            <p class="text-center text-gray-500 text-sm mt-12 reveal delay-400">※初回はカウンセリングと検査を丁寧に行うため、時間に余裕を持ってお越しください。</p>
-        </div>
-    </section>
-
-    <section class="section-light">
-        <div class="container">
-            <h4 class="font-serif text-4xl md:text-5xl text-center mb-16 text-dark reveal delay-100">
-                アクセス & 営業時間
-            </h4>
-            <div class="grid md:grid-cols-2 gap-12 text-dark">
-                <div class="reveal delay-200">
-                    <h5 class="font-serif text-2xl mb-6 text-accent">アクセス</h5>
-                    <p class="text-lg mb-4">
-                        〒981-3131<br>宮城県仙台市泉区上谷刈３丁目６－２５<br>カヤバプラザ弐番館１０２
-                    </p>
-                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
-                        <li>仙台市営地下鉄南北線「泉中央駅」から徒歩12分</li>
-                        <li>駐車場2台完備（お車でも安心してお越しいただけます）</li>
-                    </ul>
-                </div>
-                <div class="reveal delay-300">
-                    <h5 class="font-serif text-2xl mb-6 text-accent">営業時間</h5>
-                    <p class="font-outfit text-5xl mb-4">10:00 - 20:00</p>
-                    <p class="text-red-600 font-bold text-lg mb-6">定休日：日曜（不定休あり）</p>
-                    <p class="text-sm text-gray-700">※完全予約制。WEBまたはお電話にてご予約ください。</p>
+                    <p class="text-gray-400 text-xl">特に気になる箇所を重点的に施術。まず石井院長の技術を体感したい方へ。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 text-center bg-bg-dark border-t border-border-color">
+    <section class="bg-white text-black">
         <div class="container">
-            <p class="font-outfit text-xs tracking-[0.5em] mb-4 opacity-50 reveal delay-100">IZUMICHUO MINAMI SEIKOTSUIN</p>
-            <p class="text-xs opacity-30 reveal delay-200">© 2026 TAKAMITSU ISHII. ALL RIGHTS RESERVED.</p>
+            <h2 class="font-impact section-title !text-black reveal">Q & A.</h2>
+            <div class="max-w-4xl space-y-16 reveal">
+                <div class="border-b border-black/10 pb-10">
+                    <p class="font-impact text-2xl text-[var(--accent-green)] mb-4 italic">Q. 駐車場はありますか？</p>
+                    <p class="text-xl">A. はい。店舗前に駐車場を2台分完備しております。安心してお越しください。</p>
+                </div>
+                <div class="border-b border-black/10 pb-10">
+                    <p class="font-impact text-2xl text-[var(--accent-green)] mb-4 italic">Q. 施術は痛いですか？</p>
+                    <p class="text-xl">A. 患者様の状態に合わせます。ハイボルトなど刺激の少ない方法も選べますのでご安心ください。</p>
+                </div>
+                <div class="border-b border-black/10 pb-10">
+                    <p class="font-impact text-2xl text-[var(--accent-green)] mb-4 italic">Q. 当日の予約も可能ですか？</p>
+                    <p class="text-xl">A. 空きがあれば可能です。24時間WEB予約から最新の空席状況を確認いただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-40 bg-black text-center border-t border-white/5">
+        <div class="container">
+            <h2 class="font-impact text-6xl md:text-[140px] mb-20 opacity-10">ISHII</h2>
+            <p class="font-serif text-xl mb-12 opacity-40">宮城県仙台市泉区上谷刈3-6-25 / 10:00 - 20:00 / 日曜定休</p>
+            <p class="font-impact text-[10px] tracking-[1em] opacity-10 uppercase">© 2026 Izumichuo Minami. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // ScrollRevealの設定を、安定性と高級感を両立させるように調整
-        // visibility: hidden; で初期非表示にし、アニメーションで表示
-        // opacity: 0; transform: translateY(30px); で初期位置と透明度を設定
         ScrollReveal().reveal('.reveal', { 
-            distance: '30px', 
-            duration: 1200, 
-            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)', /* より洗練されたイージング */
-            origin: 'bottom', 
-            interval: 100, /* 要素間の登場タイミングを調整 */
-            opacity: 0, /* 初期状態は透明 */
-            cleanup: true, /* 要素が画面外に出たらリセット */
-            viewFactor: 0.3 /* 要素の30%が表示されたらアニメーション開始 */
+            distance: '80px', duration: 1800, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', origin: 'bottom', interval: 250, opacity: 0, cleanup: true
         });
-
-        // 遅延アニメーションのための追加クラス
-        ScrollReveal().reveal('.delay-100', { delay: 100 });
-        ScrollReveal().reveal('.delay-200', { delay: 200 });
-        ScrollReveal().reveal('.delay-300', { delay: 300 });
-        ScrollReveal().reveal('.delay-400', { delay: 400 });
-        ScrollReveal().reveal('.delay-500', { delay: 500 });
-        ScrollReveal().reveal('.delay-600', { delay: 600 });
     </script>
 </body>
 </html>
