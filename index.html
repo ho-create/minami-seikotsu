@@ -8,8 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --accent: #22c55e; --bg-dark: #050707; }
-        /* 背景は黒、文字は白とはっきり指定します */
-        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-dark); color: #ffffff !important; overflow-x: hidden; margin: 0; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-dark); color: #ffffff; overflow-x: hidden; margin: 0; }
         .font-oswald { font-family: 'Oswald', sans-serif; }
         .font-serif { font-family: 'Noto Serif JP', serif; }
         
@@ -21,108 +20,152 @@
             display: flex; align-items: center; justify-content: center;
         }
 
-        .glass-container { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; border-radius: 1.5rem; }
+        .outline-title { -webkit-text-stroke: 1px rgba(255,255,255,0.1); color: transparent; font-size: 10vw; line-height: 1; position: absolute; pointer-events: none; }
+        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border-left: 3px solid var(--accent); padding: 3rem; margin-bottom: 2rem; }
         
-        /* 文字が見えない原因となるアニメーションを一度オフにし、確実に表示させます */
-        .content-visible { opacity: 1 !important; transform: none !important; color: #ffffff !important; }
-        
-        p { text-align: justify; word-break: break-all; line-height: 2.2; color: #e5e7eb !important; }
-        h1, h2, h3, h4 { color: #ffffff !important; }
+        p { text-align: justify; word-break: break-all; line-height: 2.5; color: #d1d5db; }
+        h1, h2, h3, h4 { color: #ffffff; }
 
-        .btn-reserve {
-            background-color: var(--accent); color: #fff !important;
-            padding: 1.2rem 2.5rem; border-radius: 9999px;
-            font-weight: 900; letter-spacing: 0.1em; display: inline-block;
-            text-decoration: none; transition: 0.3s;
+        .btn-cta {
+            background-color: var(--accent); color: #fff;
+            padding: 1.5rem 3.5rem; border-radius: 9999px;
+            font-weight: 900; letter-spacing: 0.2em; display: inline-block;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-reserve:hover { background-color: #ffffff; color: var(--bg-dark) !important; }
+        .btn-cta:hover { background-color: #fff; color: var(--bg-dark); transform: translateY(-5px); box-shadow: 0 20px 60px rgba(34, 197, 94, 0.4); }
+        
+        .info-card { border: 1px solid rgba(255,255,255,0.05); transition: 0.5s; }
+        .info-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.02); }
     </style>
 </head>
 <body>
 
-    <header class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/80 backdrop-blur-md">
+    <header class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/80 backdrop-blur-md border-b border-white/5">
         <div class="font-oswald text-xl tracking-[0.3em] text-white">IZUMICHUO <span class="text-green-500">MINAMI</span></div>
-        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="text-[10px] font-bold tracking-widest border border-white/50 text-white px-5 py-2 rounded-full">RESERVE</a>
+        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-cta px-6 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase">Reserve Now</a>
     </header>
 
-    <section class="hero-section">
-        <div class="text-center px-4">
-            <h1 class="font-serif text-5xl md:text-[80px] mb-8 leading-tight">「根本改善」<br>その真髄へ。</h1>
-            <p class="text-lg md:text-2xl font-light tracking-[0.3em] mb-12 opacity-90">院長 石井 貴光</p>
-            <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-reserve">空席確認・WEB予約</a>
+    <section class="hero-section relative">
+        <div class="outline-title font-oswald text-center w-full">RECOVERY</div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="font-serif text-5xl md:text-[100px] mb-8 leading-tight">「根本改善」<br>その真髄へ。</h1>
+            <p class="text-lg md:text-2xl font-light tracking-[0.4em] mb-12 opacity-90 underline decoration-green-500 underline-offset-8 decoration-1 text-white">院長 石井 貴光</p>
+            <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-cta text-sm">空席確認・WEB予約へ進む</a>
         </div>
     </section>
 
-    <section class="py-24 bg-[#080a0a]">
+    <section class="py-32 bg-[#080a0a] relative overflow-hidden">
         <div class="container mx-auto px-6 max-w-5xl">
-            <h2 class="font-serif text-3xl md:text-5xl mb-12 text-green-500 underline decoration-1 underline-offset-8">国家資格保持者による、お悩み解消へ向けたオーダーメイド施術。</h2>
-            <div class="glass-container mb-16">
-                <p class="text-lg mb-8 italic text-white font-bold">丁寧なカウンセリングで一人ひとりのお悩みの原因を突き止め、改善へと導きます。完全個室のプライベート空間なので、周りの目も気になりません！</p>
-                <p class="mb-6">「どこに行っても変わらなかった…」そんなお悩みをお持ちの方も、ぜひ一度当院へご相談ください。家事や育児でお疲れのママさん、お仕事帰りのサラリーマンの方も大歓迎です。宮城県仙台市泉区上谷刈に位置する当院は、地下鉄泉中央駅から徒歩12分。駐車場も2台分完備しております。</p>
+            <h2 class="font-oswald text-sm tracking-[0.5em] text-green-500 mb-8 uppercase">Philosophy</h2>
+            <h3 class="font-serif text-3xl md:text-5xl mb-16 leading-relaxed">国家資格保持者による、<br>お悩み解消へ向けたオーダーメイド施術。</h3>
+            
+            <div class="glass-panel">
+                <p class="text-xl text-white mb-8">丁寧なカウンセリングで一人ひとりのお悩みの原因を突き止め、改善へと導きます。完全個室のプライベート空間なので、周りの目も気になりません！</p>
+                <p class="mb-12">「どこに行っても変わらなかった…」そんなお悩みをお持ちの方も、ぜひ一度当院へご相談ください。家事や育児でお疲れのママさん、お仕事帰りのサラリーマンの方も大歓迎です。宮城県仙台市泉区上谷刈に位置する当院は、地下鉄泉中央駅から徒歩12分。駐車場も2台分完備しております。柔道整復師の国家資格を持つ石井貴光が、あなたの身体の状態を解剖学的視点から分析し、最適なプランを提示します。</p>
+                <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="text-green-500 font-bold border-b border-green-500 pb-2 hover:opacity-70 transition">ホットペッパーでクーポンを見る ＞</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="font-oswald text-sm tracking-[0.5em] text-green-500 mb-16 uppercase text-center text-white">Our Pride</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <div class="info-card p-12 rounded-[2rem]">
+                    <h4 class="font-serif text-2xl mb-8 text-green-500 italic decoration-1">【回数券の販売を行わない理由】</h4>
+                    <p class="text-gray-300 mb-8 leading-loose">当院では、一般的な整骨院で行われている「回数券の販売」を一切行っておりません。理由は、一回一回の施術に責任を持ち、その時のベストを尽くしたいと考えているからです。回数券を買ったから通わなければならない、という心理的な拘束を患者様に強いることは、真の改善には繋がらないと信じています。</p>
+                    <p class="text-gray-400 text-sm">無理な勧誘もございませんので、ご自身のペースで通っていただけます。患者様が納得し、安心して通える整骨院であり続けることをお約束いたします。</p>
+                </div>
+                <div class="info-card p-12 rounded-[2rem]">
+                    <h4 class="font-serif text-2xl mb-8 text-green-500 italic decoration-1">【ハイボルト：深層へのアプローチ】</h4>
+                    <p class="text-gray-300 mb-8 leading-loose">当院が誇る特殊電気「ハイボルト」は、指先では届かない深層の筋肉や神経に直接アプローチします。驚くほどの除痛効果を発揮するだけでなく、この機器は非常に優れた「検査器」でもあります。反応が出る場所を特定することで、あなた自身も気づかなかった身体の癖や不調の源泉を言語化し、共有します。</p>
+                    <p class="text-gray-400 text-sm">手技では届かない深層の筋肉や神経にアプローチし、驚くほどの除痛効果を発揮。頑固なしびれや腰痛も徹底ケアします。</p>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12">
-                <div class="glass-container">
-                    <h4 class="font-serif text-xl text-green-500 mb-6">【回数券を売らない誠実さ】</h4>
-                    <p class="text-sm text-gray-300">当院では回数券の販売を一切行っておりません。一回一回の施術に責任を持ち、その時のベストを尽くしたいと考えているからです。無理な勧誘もございませんので、ご自身のペースで通っていただけます。患者様が納得し、安心して通える環境を石井貴光がお約束します。</p>
+                <div class="info-card p-12 rounded-[2rem]">
+                    <h4 class="font-serif text-2xl mb-8 text-green-500 italic decoration-1">【完全個室：お子様連れへの配慮】</h4>
+                    <p class="text-gray-300 mb-8 leading-loose">「子供がいるから通院できない」というママさんの悩みを解決するため、当院は完全個室かつベビーカーごと入室できる広さを確保しています。施術ベッドのすぐ横にお子様がいらっしゃる環境で、安心して施術を受けていただけます。周囲を気にする必要はありません。</p>
+                    <p class="text-gray-400 text-sm">産後の骨盤矯正や、抱っこによる肩こり・腰痛など、産前産後特有のお悩みも国家資格者の視点から丁寧にケアします。</p>
                 </div>
-                <div class="glass-container">
-                    <h4 class="font-serif text-xl text-green-500 mb-6">【特殊電気ハイボルトの真価】</h4>
-                    <p class="text-sm text-gray-300">手技では届かない、身体の深層10cm以上にある筋肉や神経に直接アプローチ。驚くほどの除痛効果を発揮するだけでなく、痛みの根本原因を特定する「検査器」としても機能します。反応が出る場所を特定し、なぜ痛いのかを論理的に共有します。</p>
-                </div>
-                <div class="glass-container">
-                    <h4 class="font-serif text-xl text-green-500 mb-6">【完全個室：お子様連れ歓迎】</h4>
-                    <p class="text-sm text-gray-300">ベビーカーごと入室できる広さを確保した完全個室。ベッドのすぐ横にお子様がいらっしゃる環境で、安心して施術を受けていただけます。産後の骨盤矯正や、育児による腰痛・肩こりなど、産前産後特有のお悩みも国家資格者の視点から丁寧にケアします。</p>
-                </div>
-                <div class="glass-container">
-                    <h4 class="font-serif text-xl text-green-500 mb-6">【オーダーメイド施術】</h4>
-                    <p class="text-sm text-gray-300">一人として同じ身体はありません。仕事、生活リズム、過去の怪我を考慮し、手技と特殊電気を組み合わせたあなただけのメニューを作成。その場しのぎではない、戻らない身体を作るためのアフターケアまで石井院長が徹底サポートします。</p>
+                <div class="info-card p-12 rounded-[2rem]">
+                    <h4 class="font-serif text-2xl mb-8 text-green-500 italic decoration-1">【オーダーメイド施術の真髄】</h4>
+                    <p class="text-gray-300 mb-8 leading-loose">一人として同じ身体はありません。仕事の内容、生活リズム、過去の怪我など、すべてを考慮した上で、手技と特殊電気を組み合わせたあなただけのメニューを作成します。その場しのぎのマッサージではなく、日常生活のアドバイスまで徹底して行い、再発しにくい体質へと導きます。</p>
+                    <p class="text-gray-400 text-sm">国家資格保持者の確かな知識で、痛みの原因を特定しアプローチ。戻らない身体を作るためのアフターケアまで石井院長が徹底サポートします。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-black">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <h3 class="font-oswald text-4xl mb-16 text-center tracking-widest text-white">MENU & COUPON</h3>
-            <div class="space-y-8">
-                <div class="glass-container border-l-4 border-green-500">
-                    <h4 class="font-serif text-2xl mb-4">【つらい肩こり・腰痛に】全身オーダーメイド整体 75分</h4>
-                    <p class="text-sm text-gray-400 mb-6 italic">カウンセリングを含めたお時間となります。手技と特殊電気を組み合わせ、背骨・骨盤の歪みを整え、筋肉の緊張を深部から緩和。根本から改善したい方にオススメです！</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl font-oswald text-white">¥5,980</span>
-                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-reserve py-2 px-6 text-sm">予約する</a>
+    <section class="py-32 bg-[#050707]">
+        <div class="container mx-auto px-6 max-w-6xl text-white">
+            <h3 class="font-oswald text-4xl mb-20 text-center tracking-[0.2em]">MENU & COUPON</h3>
+            <div class="space-y-12 mb-20">
+                <div class="glass-panel border-green-500">
+                    <span class="text-green-500 font-bold text-xs tracking-widest block mb-4 uppercase">Popular No.1</span>
+                    <h4 class="font-serif text-3xl mb-8 italic">【つらい肩こり・腰痛に】全身オーダーメイド整体 75分</h4>
+                    <p class="text-gray-400 mb-12">カウンセリングを含めたお時間となります。お身体の状態に合わせて、手技と特殊電気を組み合わせたオーダーメイド施術を行います。どこに行っても良くならなかった方、根本から改善したい方にオススメです！背骨・骨盤の歪みを整え、筋肉の緊張を深部から緩和。最後に日常生活のアドバイスまで徹底して行い、再発しにくい体質へと導きます。</p>
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12">
+                        <div class="text-5xl font-oswald text-white tracking-tighter">¥5,980 <span class="text-xs opacity-40 font-sans italic">Tax-in</span></div>
+                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-cta text-sm">このクーポンで予約する</a>
                     </div>
                 </div>
-                <div class="glass-container border-l-4 border-green-500">
-                    <h4 class="font-serif text-2xl mb-4">【ピンポイント改善】オーダーメイド整体 45分</h4>
-                    <p class="text-sm text-gray-400 mb-6 italic">カウンセリングを含めたお時間となります。特に気になる箇所を重点的に施術。お忙しい方や、まずはお試ししてみたい方にオススメのコースです。急性の痛みにも的確に応えます。</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl font-oswald text-white">¥2,980</span>
-                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-reserve py-2 px-6 text-sm">予約する</a>
+
+                <div class="glass-panel border-white/20">
+                    <h4 class="font-serif text-3xl mb-8 italic text-white font-bold">【ピンポイント改善】オーダーメイド整体 45分</h4>
+                    <p class="text-gray-400 mb-12">カウンセリングを含めたお時間となります。特に気になる箇所を重点的に、手技と特殊電気を組み合わせて施術いたします。お忙しい方や、まずはお試ししてみたい方にオススメのコースです。急性の痛みや、どうしてもここだけは今日何とかしたい、というニーズに応えます。</p>
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12 text-white">
+                        <div class="text-5xl font-oswald tracking-tighter">¥2,980 <span class="text-xs opacity-40 font-sans italic text-white">Tax-in</span></div>
+                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-cta text-sm">このクーポンで予約する</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-24 bg-[#050707] border-t border-white/10 text-center">
-        <div class="container mx-auto px-6">
-            <h2 class="font-oswald text-4xl mb-12 tracking-tighter text-white uppercase">Izumichuo Minami</h2>
-            <div class="grid md:grid-cols-2 gap-12 text-left text-gray-400 text-sm max-w-4xl mx-auto mb-16">
+    <section class="py-40 bg-black">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h3 class="font-serif text-3xl md:text-6xl mb-16 leading-tight">諦める前に、最後にご相談ください。</h3>
+            <div class="glass-panel text-left p-12 md:p-20 border border-white/5">
+                <h4 class="font-serif text-2xl text-green-500 mb-10 underline decoration-1">院長 石井 貴光 からのメッセージ</h4>
+                <p class="text-white text-xl leading-[2.6] mb-12">私が整骨院を運営する上で最も大切にしているのは、患者様との「信頼関係」です。どこに行っても異常なしと言われた痛み。年だからと諦めていた痛み。それらには必ず理由があります。当院は、一時的な癒やしを目的としていません。あなたが痛みから解放され、お子様を思い切り抱きしめたり、趣味のスポーツを楽しんだり、朝スッと起きられたり。そんな「当たり前の幸せ」を取り戻す場所でありたいと考えています。完全個室、回数券なし、国家資格者のマンツーマン施術。そのすべては、あなたが最短で改善するために用意した答えです。</p>
+                <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-cta block text-center">石井院長に相談予約する</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-32 bg-[#050707] border-t border-white/10">
+        <div class="container mx-auto px-6 max-w-6xl text-white">
+            <div class="grid md:grid-cols-2 gap-24 items-start">
                 <div>
-                    <p class="text-white font-bold mb-2">院長 石井 貴光</p>
-                    <p>〒981-3131 宮城県仙台市泉区上谷刈３丁目６－２５<br>カヤバプラザ弐番館１０２</p>
-                    <p class="mt-4 italic text-white font-bold text-lg">地下鉄泉中央駅 徒歩12分 / 駐車場2台完備</p>
+                    <h2 class="font-oswald text-5xl mb-12 tracking-tighter">IZUMICHUO <span class="text-green-500">MINAMI</span></h2>
+                    <div class="space-y-12 text-gray-400">
+                        <div>
+                            <p class="text-white font-bold mb-4 uppercase tracking-[0.5em] text-xs">Information</p>
+                            <p class="text-xl">〒981-3131 宮城県仙台市泉区上谷刈３丁目６－２５　カヤバプラザ弐番館１０２</p>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold mb-4 uppercase tracking-[0.5em] text-xs text-white">Access</p>
+                            <p class="text-lg">仙台市営地下鉄南北線「泉中央駅」から徒歩12分。駐車場2台完備しております。お車でも安心してお越しください。</p>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold mb-4 uppercase tracking-[0.5em] text-xs text-white text-white">Hours</p>
+                            <p class="text-4xl text-white font-oswald font-bold tracking-widest text-white text-white">10:00 - 20:00</p>
+                            <p class="text-red-500 font-bold mt-4 italic tracking-widest text-white text-white">定休日：日曜（不定休あり）</p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-white font-bold mb-2 tracking-widest uppercase">Hours</p>
-                    <p class="text-2xl text-white font-bold">10:00 - 20:00</p>
-                    <p class="text-red-500 font-bold mt-2">定休日：日曜（不定休あり）</p>
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="mt-6 block text-green-500 font-bold underline">WEB予約はこちら（24時間受付）</a>
+                <div class="text-white text-white">
+                    <div class="glass-panel p-12 rounded-[2rem] text-white">
+                        <h4 class="font-serif text-2xl text-green-500 mb-8 italic">WEB RESERVATION</h4>
+                        <p class="text-gray-400 mb-12 text-white text-white">当院は完全予約制となっております。ホットペッパービューティーより24時間いつでも空き状況の確認、ご予約が可能です。無理な勧誘や回数券の販売はございませんので、安心してお越しください。皆様の健やかな毎日を全力でサポートいたします。</p>
+                        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-cta block text-center">ホットペッパーで空席を確認</a>
+                    </div>
                 </div>
             </div>
-            <p class="opacity-20 text-[10px] tracking-[0.5em] text-white uppercase">© 2026 IZUMICHUO MINAMI SEIKOTSUIN</p>
+            <p class="mt-40 font-oswald text-[10px] tracking-[1em] opacity-20 text-center text-white">© 2026 IZUMICHUO MINAMI SEIKOTSUIN</p>
         </div>
     </footer>
 
