@@ -3,219 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泉中央みなみ整骨院 | 仙台市泉区中央</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>泉中央みなみ整骨院</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@100;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a1a;
-            --accent: #c0392b;
-            --bg: #ffffff;
-            --line: #e5e5e5;
+            --black: #000000;
+            --white: #ffffff;
+            --accent: #005bac; /* ICTを象徴する深いブルー */
+            --line: #e0e0e0;
         }
 
         body {
             margin: 0;
-            padding: 0;
             font-family: 'Noto Sans JP', sans-serif;
-            color: var(--primary);
-            background: var(--bg);
-            line-height: 1.8;
-            word-break: break-all;
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            word-break: keep-all; /* 改行制御 */
         }
 
-        /* 改行制御用 */
-        .u-keep { display: inline-block; white-space: nowrap; }
+        .u-keep { display: inline-block; }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 5vw;
-        }
-
-        /* --- Header --- */
-        header {
-            padding: 60px 0;
-            border-bottom: 4px solid var(--primary);
-        }
-        .header-top {
-            font-size: 13px;
-            letter-spacing: 0.2em;
-            margin-bottom: 10px;
-        }
-        h1 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: clamp(32px, 8vw, 52px);
-            margin: 0;
-            font-weight: 700;
-        }
-
-        /* --- Statement Area (写真予定地を言葉で支配) --- */
-        .visual-replacement {
-            padding: 120px 0;
-            background: #fdfdfd;
-            border-bottom: 1px solid var(--line);
-        }
-        .v-text-large {
-            font-family: 'Noto Serif JP', serif;
-            font-size: clamp(24px, 5vw, 42px);
-            line-height: 1.6;
-            font-weight: 700;
-            margin-bottom: 40px;
-        }
-        .v-text-sub {
-            font-size: 18px;
-            color: #555;
-            max-width: 800px;
-        }
-
-        /* --- Content Layout --- */
-        .section-title {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 28px;
-            padding: 100px 0 40px;
-            border-bottom: 1px solid var(--primary);
-            margin-bottom: 60px;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px;
-            margin-bottom: 80px;
-        }
-
-        .info-card h3 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 22px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
-        }
-
-        .symptom-list {
+        /* --- 1. HERO: 大胆なタイポグラフィ --- */
+        .hero {
+            height: 100vh;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .symptom-tag {
-            font-size: 12px;
-            padding: 5px 12px;
-            border: 1px solid var(--line);
+            align-items: flex-end;
+            padding: 5vw;
+            box-sizing: border-box;
+            border-bottom: 2px solid var(--black);
         }
 
-        /* --- Table Area (受付時間) --- */
-        .time-table {
+        .hero-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(40px, 15vw, 180px);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+
+        /* --- 2. STATEMENT: ダイナミックなコントラスト --- */
+        .statement {
+            padding: 15vh 5vw;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .statement-text {
+            font-size: clamp(24px, 5vw, 56px);
+            font-weight: 100;
+            line-height: 1.6;
+        }
+
+        .statement-text b { font-weight: 900; color: var(--accent); }
+
+        /* --- 3. LAYOUT: ICTクリーン・グリッド --- */
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .grid-cell {
+            padding: 80px 5vw;
+            border-right: 1px solid var(--line);
+        }
+
+        .grid-cell:last-child { border-right: none; }
+
+        .label {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.3em;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .cell-content h3 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        /* --- 4. DATA: 緻密な情報レイアウト --- */
+        .info-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 40px 0;
+            font-size: 14px;
         }
-        .time-table th, .time-table td {
-            border: 1px solid var(--line);
-            padding: 15px;
-            text-align: center;
+
+        .info-table td {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--line);
         }
-        .time-table th { background: #f9f9f9; font-weight: 500; }
+
+        .info-table td:first-child { font-weight: 700; width: 30%; }
 
         footer {
-            background: var(--primary);
-            color: #fff;
-            padding: 80px 0;
-            margin-top: 100px;
+            padding: 100px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        /* スマホ調整 */
-        @media (max-width: 600px) {
-            .content-grid { gap: 40px; }
-            .v-text-large { font-size: 22px; }
+        /* Responsive */
+        @media (max-width: 800px) {
+            .grid-section { grid-template-columns: 1fr; }
+            .grid-cell { border-right: none; border-bottom: 1px solid var(--line); }
+            .hero { height: auto; padding: 120px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="container">
-        <div class="header-top u-keep">SENDAI IZUMICHUO / 仙台市泉中央</div>
-        <h1>泉中央みなみ整骨院</h1>
+    <header class="hero">
+        <h1 class="hero-title">
+            <span class="u-keep">泉中央</span><br>
+            <span class="u-keep">みなみ</span><br>
+            <span class="u-keep">整骨院</span>
+        </h1>
     </header>
 
-    <main class="container">
-        <section class="visual-replacement">
-            <div class="v-text-large">
-                <span class="u-keep">「治る」を確信に、</span><br>
-                <span class="u-keep">「動ける」を喜びに。</span>
-            </div>
-            <div class="v-text-sub">
-                <p>
-                    <span class="u-keep">痛みは、身体が発するSOSです。</span>
-                    <span class="u-keep">私たちはその原因を論理的に紐解き、</span>
-                    <span class="u-keep">手技と最新の知見を用いて</span>
-                    <span class="u-keep">最適な回復軌道を描きます。</span>
-                    <span class="u-keep">泉中央の地で、</span>
-                    <span class="u-keep">お一人おひとりの日常に</span>
-                    <span class="u-keep">真摯に向き合います。</span>
-                </p>
-            </div>
-        </section>
+    <section class="statement">
+        <div class="statement-text">
+            <span class="u-keep">身体の<b>不調</b>を、</span><br>
+            <span class="u-keep">確かな<b>技術</b>で</span><br>
+            <span class="u-keep"><b>書き換える。</b></span>
+        </div>
+    </section>
 
-        <section id="service">
-            <h2 class="section-title">診療案内</h2>
-            <div class="content-grid">
-                <div class="info-card">
-                    <h3>保険診療</h3>
-                    <p>日常生活やスポーツ、作業中のケガなど、原因のはっきりした痛みに対し各種健康保険を適用できます。</p>
-                    <div class="symptom-list">
-                        <span class="symptom-tag">骨折</span><span class="symptom-tag">脱臼</span>
-                        <span class="symptom-tag">捻挫</span><span class="symptom-tag">打撲</span>
-                        <span class="symptom-tag">挫傷（肉離れ）</span>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <h3>自費診療（特別整体）</h3>
-                    <p>慢性的な肩こり、腰痛、身体の歪み。保険の枠内では網羅しきれない根本的な課題へアプローチします。</p>
-                    <div class="symptom-list">
-                        <span class="symptom-tag">姿勢改善</span><span class="symptom-tag">骨盤矯正</span>
-                        <span class="symptom-tag">慢性痛</span><span class="symptom-tag">パフォーマンス向上</span>
-                    </div>
-                </div>
+    <div class="grid-section">
+        <div class="grid-cell">
+            <span class="label">SERVICES / 01</span>
+            <div class="cell-content">
+                <h3>保険診療</h3>
+                <p>骨折、脱臼、捻挫、打撲、挫傷。<br>急性期の痛みを、解剖学的な根拠に基づき速やかに沈静化させます。</p>
             </div>
-        </section>
+        </div>
+        <div class="grid-cell">
+            <span class="label">SERVICES / 02</span>
+            <div class="cell-content">
+                <h3>自費診療</h3>
+                <p>慢性痛へのアプローチ、パフォーマンス向上。<br>身体の構造を再構築し、本来のポテンシャルを解放します。</p>
+            </div>
+        </div>
+    </div>
 
-        <section id="access">
-            <h2 class="section-title">受付時間・アクセス</h2>
-            <table class="time-table">
-                <thead>
-                    <tr>
-                        <th>受付時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>9:00 - 12:30</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>×</td>
-                    </tr>
-                    <tr>
-                        <td>15:00 - 20:00</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>×</td><td>×</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="font-size: 14px; color: #666;">※土曜は午前の部（13:00まで）のみとなります。 / 日曜・祝日は休診です。</p>
-            
-            <div style="margin-top: 40px; padding: 30px; border: 1px solid var(--line);">
-                <p><strong>所在地：</strong>〒981-3133 宮城県仙台市泉区泉中央</p>
-                <p><strong>電話番号：</strong>お電話でのご予約・お問い合わせを承っております。</p>
-            </div>
-        </section>
-    </main>
+    <section class="container" style="padding: 100px 5vw;">
+        <span class="label">INFORMATION</span>
+        <table class="info-table">
+            <tr>
+                <td>所在地</td>
+                <td>〒981-3133 宮城県仙台市泉区泉中央</td>
+            </tr>
+            <tr>
+                <td>受付時間</td>
+                <td>
+                    <span class="u-keep">平日 9:00 - 12:30 / 15:00 - 20:00</span><br>
+                    <span class="u-keep">土曜 9:00 - 13:00（日曜・祝日休診）</span>
+                </td>
+            </tr>
+            <tr>
+                <td>専門領域</td>
+                <td>
+                    <span class="u-keep">骨折・脱臼の応急処置</span> / 
+                    <span class="u-keep">交通事故治療</span> / 
+                    <span class="u-keep">スポーツ外傷</span>
+                </td>
+            </tr>
+        </table>
+    </section>
 
     <footer>
-        <div class="container">
-            <p style="font-size: 20px; font-family: 'Noto Serif JP', serif;">泉中央みなみ整骨院</p>
-            <p style="margin-top: 20px; opacity: 0.7;">
-                <span class="u-keep">私たちは、地域の皆様の</span>
-                <span class="u-keep">「一番身近な身体の相談所」</span>
-                <span class="u-keep">であり続けることを誓います。</span>
-            </p>
-            <p style="margin-top: 40px; font-size: 12px; opacity: 0.5;">© 2026 泉中央みなみ整骨院</p>
+        <div>
+            <h2 style="font-size: 24px; font-weight: 900; margin: 0;">泉中央みなみ整骨院</h2>
+            <p style="font-size: 12px; margin-top: 10px;">IZUMICHUO MINAMI OSTEOPATHIC COUNCIL</p>
         </div>
+        <p style="font-size: 12px; opacity: 0.4;">© 2026</p>
     </footer>
 
 </body>
