@@ -3,156 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泉中央みなみ整骨院 | 石井貴光による根本改善整体</title>
+    <title>泉中央みなみ整骨院 | 石井貴光</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <style>
-        body { font-family: 'Noto Sans JP', sans-serif; scroll-behavior: smooth; }
-        .font-serif { font-family: 'Shippori Mincho', serif; }
-        .bg-concept { background-color: #f8f9f8; }
-        .text-accent { color: #2d5a52; }
-        .bg-accent { background-color: #2d5a52; }
-        .btn-orange { background-color: #e67e22; }
+        :root { --main-dark: #0a1110; --accent: #22c55e; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--main-dark); color: #fff; }
+        .font-main { font-family: 'Montserrat', sans-serif; }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        .hero-bg { background: linear-gradient(to bottom, rgba(10,17,16,0.5), rgba(10,17,16,1)), url('https://imgbp.hotp.jp/CSP/sln/H000637500/H000637500_428_321.jpg'); background-size: cover; background-position: center; }
+        .outline-text { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
-<body class="text-gray-800 bg-white leading-relaxed">
+<body>
 
-    <header class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex flex-col">
-                <h1 class="text-xl font-bold tracking-tighter text-gray-900">泉中央みなみ整骨院</h1>
-                <p class="text-[10px] text-accent font-bold tracking-[0.2em] leading-none mt-1">院長 石井 貴光</p>
-            </div>
-            <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="bg-accent text-white px-5 py-2 rounded shadow-sm text-sm font-bold hover:opacity-90 transition">Web予約</a>
-        </div>
+    <header class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/50">
+        <div class="font-main font-extrabold text-2xl tracking-tighter">IZUMICHUO <span class="text-green-500">MINAMI</span></div>
+        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-full text-xs font-bold tracking-widest transition duration-500">BOOK NOW</a>
     </header>
 
-    <section class="relative pt-32 pb-20 bg-concept overflow-hidden">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-3/5 z-10">
-                <h2 class="font-serif text-4xl md:text-5xl leading-[1.3] mb-8 text-gray-900">
-                    その痛み、<br>
-                    <span class="text-accent underline decoration-stone-300 underline-offset-8">「今日で終わらせる」</span><br>
-                    覚悟で向き合います。
-                </h2>
-                <p class="text-lg text-gray-600 mb-10 leading-loose">
-                    「どこへ行っても変わらなかった」という絶望を、<br class="hidden md:block">
-                    石井貴光が責任を持って希望に変えます。<br>
-                    当院は、あなたの時間を回数券で縛りません。
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-orange text-white px-8 py-5 rounded-lg font-bold text-lg shadow-xl hover:translate-y-[-2px] transition text-center">
-                        【初回限定】根本改善コース ¥2,980
-                    </a>
-                </div>
-            </div>
-            <div class="md:w-2/5 relative">
-                <div class="rounded-2xl overflow-hidden shadow-2xl border-[12px] border-white">
-                    <img src="https://imgbp.hotp.jp/CSP/sln/H000637500/H000637500_428_321.jpg" alt="石井貴光先生の施術" class="w-full h-auto">
-                </div>
-            </div>
+    <section class="hero-bg min-h-screen flex items-center justify-center relative px-4">
+        <div class="text-center">
+            <h1 class="font-main text-6xl md:text-[120px] outline-text leading-none mb-4">RECOVERY</h1>
+            <h2 class="font-serif text-3xl md:text-6xl font-black mb-8 leading-tight">
+                「痛み」のその先を、<br><span class="text-green-500">石井貴光</span>が創る。
+            </h2>
+            <p class="text-sm md:text-lg tracking-[0.3em] font-light opacity-70 mb-12">NO SUBSCRIPTION / TOTAL ANALYSIS / PRIVATE SPACE</p>
+            <div class="animate-bounce text-green-500">SCROLL DOWN</div>
         </div>
     </section>
 
-    <section class="py-20 bg-accent text-white">
-        <div class="container mx-auto px-4 max-w-3xl text-center">
-            <h3 class="text-2xl md:text-3xl font-serif mb-8 leading-relaxed">当院が「回数券」を売らない理由。</h3>
-            <p class="text-lg leading-[2] opacity-90">
-                それは、一回一回の施術に、プロとしての「真剣勝負」を挑んでいるからです。<br>
-                「あと10回通えば…」という曖昧な約束であなたを縛りたくありません。<br>
-                あなたが「今日、ここに来て良かった」と心から納得し、<br>
-                自らの意志で次の一歩を選んでいただく。それが当院の誠実さです。
+    <section class="py-32 px-4 relative overflow-hidden">
+        <div class="absolute top-0 left-0 text-[200px] font-main font-black opacity-5 select-none leading-none -translate-x-20">ESTHETIC</div>
+        <div class="container mx-auto max-w-4xl relative z-10">
+            <h3 class="font-serif text-2xl md:text-4xl mb-12 border-l-4 border-green-500 pl-6 leading-relaxed">
+                回数券で縛ることを、<br>私は断絶する。
+            </h3>
+            <p class="text-gray-400 text-lg md:text-xl leading-loose mb-16">
+                多くの整骨院が「通わせること」を目的とする中で、泉中央みなみ整骨院は「卒業させること」にすべてを注ぎます。一回一回が、あなたと石井貴光との真剣勝負。回数券という甘えを排除し、その瞬間の最善を尽くす。それがプロとしての矜持です。
             </p>
         </div>
     </section>
 
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-16">
-                <div>
-                    <span class="text-5xl font-serif text-gray-200 block mb-4">01</span>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="w-2 h-6 bg-accent mr-3"></span>指が届かない10cm奥へ
-                    </h4>
-                    <p class="text-gray-600 leading-loose">
-                        手技だけでは届かない「痛みの根っこ」に、特殊なエネルギーで直接アプローチ。痛みのスイッチをオフにし、その場で変化を実感していただきます。
-                    </p>
-                </div>
-                <div>
-                    <span class="text-5xl font-serif text-gray-200 block mb-4">02</span>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="w-2 h-6 bg-accent mr-3"></span>個室は「ママの解放区」
-                    </h4>
-                    <p class="text-gray-600 leading-loose">
-                        ベビーカーをベッドの横に置いたまま、お子様の顔を見ながら施術。泣き声を気に病む必要はありません。あなたが休むことが、家族の幸せに繋がります。
-                    </p>
-                </div>
-                <div>
-                    <span class="text-5xl font-serif text-gray-200 block mb-4">03</span>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="w-2 h-6 bg-accent mr-3"></span>「なぜ痛いか」を言語化
-                    </h4>
-                    <p class="text-gray-600 leading-loose">
-                        原因不明と言われた痛みの正体を、生活習慣から読み解き、分かりやすく翻訳します。納得して受ける施術こそ、最大の効果を発揮します。
-                    </p>
-                </div>
+    <section class="py-24 px-4 bg-[#0d1615]">
+        <div class="container mx-auto grid md:grid-cols-3 gap-8">
+            <div class="glass p-12 rounded-3xl reveal">
+                <div class="text-green-500 font-main text-4xl mb-6">01</div>
+                <h4 class="text-2xl font-bold mb-6 font-serif underline decoration-green-500 decoration-4">深層10cmの解放</h4>
+                <p class="text-gray-400 leading-loose text-sm">手技では不可能な領域へ。特殊なエネルギーを浸透させ、痛みのスイッチを物理的に遮断します。</p>
+            </div>
+            <div class="glass p-12 rounded-3xl reveal" style="transition-delay: 200ms;">
+                <div class="text-green-500 font-main text-4xl mb-6">02</div>
+                <h4 class="text-2xl font-bold mb-6 font-serif underline decoration-green-500 decoration-4">孤高のプライベート</h4>
+                <p class="text-gray-400 leading-loose text-sm">ベビーカーを横に置いたまま、誰の目も気にせず。ここはママが「自分」を取り戻すための聖域です。</p>
+            </div>
+            <div class="glass p-12 rounded-3xl reveal" style="transition-delay: 400ms;">
+                <div class="text-green-500 font-main text-4xl mb-6">03</div>
+                <h4 class="text-2xl font-bold mb-6 font-serif underline decoration-green-500 decoration-4">痛みの翻訳</h4>
+                <p class="text-gray-400 leading-loose text-sm">「異常なし」の裏にある真実を。石井先生があなたの体の癖を読み解き、論理的に解明します。</p>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-concept">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h3 class="text-3xl font-serif text-center mb-16">小さな不安も、置いていってください。</h3>
-            <div class="space-y-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm hover-scale transition">
-                    <p class="font-bold text-accent mb-2 italic">Q. 迷惑じゃない？本当にベビーカーでいいの？</p>
-                    <p class="text-gray-600">
-                        もちろんです。当院の個室は、ベビーカーが余裕を持って入るよう設計されています。ママが罪悪感を感じず、自分を大切にできる時間を守るのが私の使命です。
-                    </p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm hover-scale transition">
-                    <p class="font-bold text-accent mb-2 italic">Q. 病院で「年だから」「異常なし」と言われたけれど…</p>
-                    <p class="text-gray-600">
-                        骨に異常がないのに痛むなら、必ず別の理由があります。あなたの痛みを「気のせい」にはさせません。1ミリ単位で痛みの火種を探し出します。
-                    </p>
-                </div>
-            </div>
-        </div>
+    <section class="py-40 text-center px-4">
+        <h3 class="font-serif text-4xl md:text-7xl mb-12">まずは、<span class="text-green-500">2,980円</span>で。<br>違いを体感する。</h3>
+        <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="inline-block bg-white text-black px-16 py-6 rounded-full font-main font-black text-xl hover:bg-green-500 hover:text-white transition duration-500 shadow-[0_0_50px_rgba(34,197,94,0.3)]">RESERVE NOW</a>
     </section>
 
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="bg-gray-50 rounded-[2rem] p-10 md:p-16 flex flex-col md:flex-row gap-12 border border-gray-100">
-                <div class="md:w-1/2">
-                    <h3 class="text-3xl font-serif mb-8 text-accent">泉中央みなみ整骨院</h3>
-                    <dl class="space-y-6">
-                        <div>
-                            <dt class="font-bold text-gray-400 text-xs tracking-widest mb-1">ACCESS</dt>
-                            <dd class="text-lg">宮城県仙台市泉区上谷刈３丁目６−２５<br>カヤバプラザ弐番館１０２</dd>
-                            <dd class="text-sm text-gray-500 mt-2">地下鉄泉中央駅 徒歩12分 / 駐車場2台完備</dd>
-                        </div>
-                        <div>
-                            <dt class="font-bold text-gray-400 text-xs tracking-widest mb-1">HOURS</dt>
-                            <dd class="text-lg font-bold text-gray-900">10:00 〜 20:00</dd>
-                            <dd class="text-sm text-red-500 font-bold mt-1 italic">定休日：日曜</dd>
-                        </div>
-                    </dl>
-                </div>
-                <div class="md:w-1/2 rounded-2xl overflow-hidden min-h-[300px] bg-gray-200">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3130.6543210!2d140.8754321!3d38.3245678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f898123456789ab%3A0x123456789abcdef!2z5rOJ5Lit5aSu44G_44Gq44G_5pW06aqo6Zmi!5e0!3m2!1sja!2sjp!4v1234567890123" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-white border-t border-gray-100 py-12">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm text-gray-400 mb-4">© 2026 泉中央みなみ整骨院 院長 石井貴光</p>
-            <div class="flex justify-center gap-8 text-xs text-gray-500 underline underline-offset-4">
-                <a href="https://beauty.hotpepper.jp/kr/slnH000637500/">ホットペッパーで予約</a>
-            </div>
+    <footer class="py-20 bg-black text-center border-t border-white/5">
+        <div class="font-main font-bold text-4xl mb-8 tracking-tighter">IZUMICHUO MINAMI</div>
+        <p class="text-gray-500 text-sm tracking-widest mb-12">SENDAI / IZUMI / TAKAMITSU ISHII</p>
+        <div class="text-xs text-gray-600">
+            〒981-3131 宮城県仙台市泉区上谷刈３丁目６−２５ カヤバプラザ弐番館１０２<br>
+            © 2026 IZUMI CHUO MINAMI SEIKOTSUIN.
         </div>
     </footer>
 
+    <script>
+        ScrollReveal().reveal('.reveal', { 
+            distance: '50px', 
+            duration: 1000, 
+            easing: 'ease-in-out', 
+            origin: 'bottom',
+            interval: 200 
+        });
+    </script>
 </body>
 </html>
