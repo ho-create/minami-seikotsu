@@ -8,7 +8,7 @@
         :root {
             --black: #000000;
             --white: #ffffff;
-            --accent: #22c55e; /* 鮮烈なグリーン */
+            --accent: #22c55e; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,7 +21,6 @@
             -webkit-text-size-adjust: 100%;
         }
 
-        /* 改行位置の固定：意味のまとまりを守る */
         .u-keep { display: inline-block; white-space: nowrap; }
 
         .impact-text {
@@ -57,7 +56,6 @@
             color: var(--black) !important;
         }
 
-        /* 洗練されたビジュアルプレースホルダー */
         .photo-space {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -68,16 +66,14 @@
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.1);
             position: relative;
-            overflow: hidden;
         }
         .light-section .photo-space { background-color: #f0f0f0; border-color: #ddd; }
         
-        /* 写真の代わりのかっこいい言葉 */
         .photo-space::after {
-            content: "TRUST THE TECHNIQUE.";
-            font-size: clamp(12px, 2vw, 18px);
-            letter-spacing: 0.8em;
-            opacity: 0.15;
+            content: "LOGICAL RECOVERY.";
+            font-size: clamp(10px, 1.5vw, 14px);
+            letter-spacing: 1em;
+            opacity: 0.1;
             font-weight: 900;
         }
 
@@ -132,17 +128,15 @@
     <section class="light-section">
         <div class="container fade-in">
             <div class="accent-bar"></div>
-            <h2 class="serif-text" style="font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.2; margin-bottom: 60px;">
-                <span class="u-keep">「回数券を売らない」</span><br>
-                <span class="u-keep">一期一会の真剣勝負を、</span><br>
-                <span class="u-keep">ぜんぶやる。</span>
+            <h2 class="serif-text" style="font-size: clamp(2.2rem, 8vw, 3.8rem); line-height: 1.1; margin-bottom: 60px;">
+                <span class="u-keep">回数券を</span><br><span class="u-keep">売らない。</span>
             </h2>
-            <div class="photo-space" style="border-left: 20px solid var(--accent);"></div>
+            <div class="photo-space" style="border-left: 15px solid var(--accent);"></div>
             <div style="max-width: 700px; font-size: 1.2rem; font-weight: 500;">
                 <p style="margin-bottom: 40px;">
                     <span class="u-keep">当院は回数券の</span><span class="u-keep">販売を行っておりません。</span>
-                    <span class="u-keep">理由は、</span><span class="u-keep">一回一回の施術に責任を持ち、</span>
-                    <span class="u-keep">その時のベストを</span><span class="u-keep">尽くしたいと考えているからです。</span>
+                    <span class="u-keep">一回一回の施術に</span><span class="u-keep">責任を持ち、</span>
+                    <span class="u-keep">その時のベストを</span><span class="u-keep">提供し続ける。</span>
                 </p>
                 <p style="opacity: 0.7;">
                     <span class="u-keep">国家資格保持者・</span><span class="u-keep">石井貴光が、</span>
@@ -158,9 +152,9 @@
             <h3 class="serif-text" style="font-size: clamp(1.8rem, 6vw, 2.5rem); color: var(--accent); margin-top: -40px; margin-bottom: 40px;">
                 <span class="u-keep">ぎっくり腰が、</span><br><span class="u-keep">その場で楽になる理由。</span>
             </h3>
-            <div class="photo-space" style="border-right: 20px solid var(--accent);"></div>
+            <div class="photo-space" style="border-right: 15px solid var(--accent);"></div>
             <p style="font-size: 1.2rem; color: #999; margin-bottom: 40px;">
-                <span class="u-keep">手技では届かない</span><span class="u-keep">深部へ直接</span><span class="u-keep">エネルギーを届け、</span><span class="u-keep">炎症を沈静化。</span>
+                <span class="u-keep">深部へ直接</span><span class="u-keep">エネルギーを届け、</span><span class="u-keep">炎症を沈静化。</span>
             </p>
             <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color: var(--accent); text-decoration: none; font-weight: 900; border-bottom: 2px solid var(--accent);">READ BLOG</a>
         </div>
@@ -170,28 +164,15 @@
         <div class="container">
             <h2 class="impact-text" style="opacity: 0.05; font-size: clamp(4rem, 15vw, 6rem);">PRICE.</h2>
             <div style="margin-top: 80px; border-top: 10px solid var(--black); padding-top: 40px;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; flex-wrap: wrap;">
-                    <p class="serif-text" style="font-size: 1.8rem;">全身オーダーメイド 75分</p>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap;">
+                    <p class="serif-text" style="font-size: 1.6rem;">全身オーダーメイド 75分</p>
                     <p class="impact-text" style="font-size: 4rem; color: var(--accent) !important;">¥5,980</p>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap;">
-                    <p class="serif-text" style="font-size: 1.8rem;">オーダーメイド 45分</p>
+                    <p class="serif-text" style="font-size: 1.6rem;">オーダーメイド 45分</p>
                     <p class="impact-text" style="font-size: 4rem; color: var(--accent) !important;">¥2,980</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h2 class="impact-text">ACCESS.</h2>
-            <div class="photo-space"></div>
-            <p style="font-size: clamp(1.2rem, 5vw, 1.5rem); margin-bottom: 20px;">
-                <span class="u-keep">〒981-3131</span><br>
-                <span class="u-keep">宮城県仙台市泉区上谷刈</span><span class="u-keep">３丁目６－２５</span><br>
-                <span class="u-keep">カヤバプラザ弐番館１０２</span>
-            </p>
-            <p style="opacity: 0.5;">泉中央駅 徒歩12分 / 駐車場2台完備</p>
         </div>
     </section>
 
