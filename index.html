@@ -2,150 +2,225 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泉中央みなみ整骨院</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@100;300;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>泉中央みなみ整骨院 | 院長 石井貴光</title>
     <style>
         :root {
-            --black: #000000;
+            --black: #0a0a0a;
             --white: #ffffff;
-            --sub: #888888;
+            --accent: #1aff00; /* 閃光のようなグリーン */
+            --soft-gray: #f7f7f7;
         }
 
+        /* リセット & 基盤 */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
         body {
-            margin: 0;
-            font-family: 'Noto Sans JP', sans-serif;
-            background: var(--white);
-            color: var(--black);
-            line-height: 1.5;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        .u-keep { display: inline-block; }
-
-        /* 1. NECネッツエスアイ流：大胆な文字のジャンプ率 */
-        header {
-            padding: 100px 5vw 40px;
-            border-bottom: 10px solid var(--black);
-        }
-        .header-sub { font-size: 12px; font-weight: 700; letter-spacing: 0.5em; margin-bottom: 20px; display: block; }
-        h1 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: clamp(38px, 10vw, 90px);
-            font-weight: 900;
-            line-height: 1.0;
-            margin: 0;
-            letter-spacing: -0.05em;
-        }
-
-        /* 2. 写真の代わり：圧倒的な言葉のコントラスト */
-        .hero-statement {
-            background: var(--black);
+            background-color: var(--black);
             color: var(--white);
-            padding: 120px 5vw;
-        }
-        .h-text {
-            font-family: 'Noto Serif JP', serif;
-            font-size: clamp(24px, 5vw, 48px);
-            font-weight: 900;
-            line-height: 1.6;
-        }
-        .h-text span { font-weight: 100; opacity: 0.6; }
-
-        /* 3. 構造化された情報量：クリーンなレイアウト */
-        section { padding: 100px 5vw; border-bottom: 1px solid #eee; }
-        .sec-label { font-size: 14px; font-weight: 700; margin-bottom: 60px; display: block; text-decoration: underline; }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 80px;
+            font-family: "Shippori Mincho", "Yu Mincho", serif;
+            overflow-x: hidden;
+            line-height: 1.8;
         }
 
-        .item h3 { font-size: 28px; font-weight: 700; margin-bottom: 20px; border-left: 1px solid var(--black); padding-left: 20px; }
-        .item p { font-size: 16px; color: #444; line-height: 1.8; }
+        /* 文章の「意味の塊」を守り、スマホ改行の事故を防ぐ */
+        .keep-block { display: inline-block; word-break: keep-all; }
 
-        /* 実用的なテーブル：極限までシンプルに */
-        .table-wrap { overflow-x: auto; margin-top: 40px; }
-        table { width: 100%; border-collapse: collapse; min-width: 500px; }
-        th, td { border: 1px solid #000; padding: 15px; text-align: center; font-size: 14px; }
-        th { background: #000; color: #fff; font-weight: 300; }
-
-        footer { padding: 80px 5vw; background: #f4f4f4; display: flex; justify-content: space-between; align-items: flex-end; }
-        .footer-logo { font-family: 'Noto Serif JP', serif; font-size: 24px; font-weight: 900; }
-
-        @media (max-width: 600px) {
-            header { padding: 60px 20px; }
-            footer { flex-direction: column; align-items: flex-start; gap: 40px; }
+        /* 背景：次元の歪みを表現するデコレーション */
+        .dim-text {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            font-size: 30vw; font-weight: 900; color: rgba(255,255,255,0.01);
+            z-index: 0; pointer-events: none; display: flex; align-items: center;
+            justify-content: center; font-family: sans-serif;
         }
+
+        /* レイアウト：圧倒的な余白と深度 */
+        section { min-height: 120vh; padding: 20vh 8vw; position: relative; z-index: 10; display: flex; align-items: center; }
+        .container { width: 100%; max-width: 1400px; margin: 0 auto; }
+
+        /* 視覚的フック：遊び心のあるグリッド */
+        .grid-line { position: absolute; background: rgba(255,255,255,0.05); }
+        .v-line { width: 1px; height: 100%; top: 0; left: 50%; }
+        .h-line { height: 1px; width: 100%; left: 0; top: 50%; }
+
+        /* 文字：ハイエンド・タイポグラフィ */
+        .hero-title { font-size: clamp(4rem, 20vw, 18rem); font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; font-family: sans-serif; }
+        .sub-title { font-size: 1rem; letter-spacing: 0.8em; opacity: 0.4; text-transform: uppercase; margin-bottom: 40px; }
+
+        /* ブランク：影と光をデザインした枠 */
+        .visual-canvas {
+            width: 100%; aspect-ratio: 16 / 11; background: #111;
+            position: relative; overflow: hidden; margin: 80px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .visual-canvas:hover { transform: scale(0.98); }
+        .visual-canvas::after { content: "LENS OF ISHII"; position: absolute; bottom: 20px; right: 20px; font-size: 9px; letter-spacing: 0.3em; opacity: 0.2; }
+
+        /* テーマ：白背景の品格（絶対視認性） */
+        .theme-white { background-color: var(--soft-gray); color: var(--black); }
+        .theme-white .hero-title, .theme-white .sub-title { color: var(--black) !important; }
+        .theme-white .visual-canvas { background: #e0e0e0; border-color: rgba(0,0,0,0.1); }
+
+        /* 追従型UI：360度どこからでも予約 */
+        .btn-orbit {
+            position: fixed; bottom: 40px; right: 40px; z-index: 1000;
+            width: 100px; height: 100px; border: 1px solid var(--accent);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; background: transparent; transition: 0.4s;
+            overflow: hidden;
+        }
+        .btn-orbit::before {
+            content: "RESERVE"; color: var(--accent); font-size: 10px; font-weight: 900;
+            letter-spacing: 0.2em; animation: rotateText 10s linear infinite;
+        }
+        @keyframes rotateText { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .btn-orbit:hover { background: var(--accent); }
+        .btn-orbit:hover::before { color: #000; }
+
+        /* 30スクロールを支えるアニメーション */
+        .reveal { opacity: 0; transform: translateY(60px); transition: 1.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <span class="header-sub">SENDAI IZUMICHUO / 01</span>
-        <h1>泉中央みなみ<br>整骨院</h1>
-    </header>
+    <div class="dim-text">PHILOSOPHY</div>
 
-    <div class="hero-statement">
-        <div class="h-text">
-            <span class="u-keep"><span>身体の</span>不調を、</span><br>
-            <span class="u-keep"><span>確かな</span>技術で</span><br>
-            <span class="u-keep">書き換える。</span>
-        </div>
-    </div>
+    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/" class="btn-orbit"></a>
 
     <section>
-        <span class="sec-label">SERVICES / 診療案内</span>
-        <div class="content-grid">
-            <div class="item">
-                <h3>保険診療</h3>
-                <p>
-                    <span class="u-keep">骨折、脱臼、捻挫、打撲、</span>
-                    <span class="u-keep">挫傷（肉離れ）など。</span><br>
-                    <span class="u-keep">原因のはっきりしたケガに対し、</span>
-                    <span class="u-keep">解剖学的な根拠に基づいた</span>
-                    <span class="u-keep">最適なアプローチを行います。</span>
-                </p>
-            </div>
-            <div class="item">
-                <h3>自費診療</h3>
-                <p>
-                    <span class="u-keep">慢性的な肩こりや腰痛、</span>
-                    <span class="u-keep">姿勢の悩み。</span><br>
-                    <span class="u-keep">身体の構造を再構築し、</span>
-                    <span class="u-keep">本来のポテンシャルを</span>
-                    <span class="u-keep">引き出す特別整体。</span>
+        <div class="grid-line v-line"></div>
+        <div class="container">
+            <p class="sub-title reveal">Izumichuo Minami</p>
+            <h1 class="hero-title reveal">
+                <span class="keep-block">痛みの、</span><br>
+                <span class="keep-block" style="color:var(--accent)">終焉。</span>
+            </h1>
+            <p class="reveal" style="margin-top: 60px; font-size: 1.2rem; opacity: 0.6;">石井貴光 | 国家資格保持者としての矜持</p>
+        </div>
+    </section>
+
+    <section class="theme-white">
+        <div class="container">
+            <h2 class="hero-title reveal" style="font-size: 10vw;">TRUTH.</h2>
+            <div class="visual-canvas reveal"></div>
+            <div style="max-width: 800px; margin-left: auto;">
+                <h3 class="keep-block reveal" style="font-size: 2.5rem; margin-bottom: 60px;">「回数券を売らない」という、<br>私の誠実。</h3>
+                <p class="reveal" style="font-size: 1.2rem; line-height: 2.2;">
+                    多くの整骨院で見られる回数券の販売。当院は、それをあえて捨てました。一回一回の施術に最大限の責任を持ちたい。通わせることが目的ではなく、一日でも早く卒業していただくこと。石井貴光が約束するのは、一期一会の真剣勝負です。
                 </p>
             </div>
         </div>
     </section>
 
     <section>
-        <span class="sec-label">INFORMATION / 受付・アクセス</span>
-        <div class="table-wrap">
-            <table>
-                <tr>
-                    <th>受付時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
-                </tr>
-                <tr>
-                    <td>09:00 - 12:30</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>×</td>
-                </tr>
-                <tr>
-                    <td>15:00 - 20:00</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>×</td><td>×</td>
-                </tr>
-            </table>
-        </div>
-        <div style="margin-top: 60px;">
-            <p style="font-size: 20px; font-weight: 700;">〒981-3133 宮城県仙台市泉区泉中央</p>
-            <p style="font-size: 14px; opacity: 0.6;">※土曜は13:00まで / 日曜・祝日は休診です。</p>
+        <div class="container">
+            <h2 class="hero-title reveal" style="opacity: 0.05;">BLOG.</h2>
+            
+            <div style="margin-bottom: 400px;">
+                <div class="visual-canvas reveal"></div>
+                <div class="reveal">
+                    <p class="sub-title" style="color:var(--accent); opacity: 1;">#01 ACUTE CARE</p>
+                    <h4 class="keep-block" style="font-size: 3rem; margin-bottom: 40px;">ぎっくり腰が、<br>その場で楽になる理由。</h4>
+                    <p style="max-width: 600px; opacity: 0.7; margin-bottom: 40px;">ハイボルト（特殊電気）は、神経の悲鳴を読み解く装置です。深層に眠る「本当の炎症」を特定し、その場で再起動させる。ブログではその具体的な改善プロセスを詳述しています。</p>
+                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color:var(--accent); text-decoration: none; border-bottom: 1px solid;">記事の全文を精査する</a>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 400px;">
+                <div class="visual-canvas reveal" style="margin-left: auto; width: 80%;"></div>
+                <div class="reveal" style="text-align: right;">
+                    <p class="sub-title" style="color:var(--accent); opacity: 1;">#02 MOM'S SANCTUARY</p>
+                    <h4 class="keep-block" style="font-size: 3rem; margin-bottom: 40px;">産後の違和感を、<br>当たり前にしないで。</h4>
+                    <p style="max-width: 600px; opacity: 0.7; margin-bottom: 40px; margin-left: auto;">ベビーカーごと入室できる完全個室。ママの身体は、家族の未来を支える資本です。産後1ヶ月から始めるべき骨盤ケアの真実を、院長自らブログに綴りました。</p>
+                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color:var(--accent); text-decoration: none; border-bottom: 1px solid;">想いの全文を読み解く</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="visual-canvas reveal"></div>
+                <div class="reveal">
+                    <p class="sub-title" style="color:var(--accent); opacity: 1;">#03 CHRONIC CAUSE</p>
+                    <h4 class="keep-block" style="font-size: 3rem; margin-bottom: 40px;">肩こりの正体は、<br>「首」にはありません。</h4>
+                    <p style="max-width: 600px; opacity: 0.7; margin-bottom: 40px;">揉んでも戻る。それは「原因」が別の場所に潜んでいるからです。ハイボルト検査が暴く、姿勢と足首の相関関係。あなたが納得するまで、私は逃げません。</p>
+                    <a href="https://beauty.hotpepper.jp/kr/slnH000637500/blog/" style="color:var(--accent); text-decoration: none; border-bottom: 1px solid;">分析の全文を確認する</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-logo">泉中央みなみ整骨院</div>
-        <p style="font-size: 12px; opacity: 0.5;">© 2026</p>
+    <section class="theme-white">
+        <div class="container">
+            <h2 class="hero-title reveal" style="text-align: right;">DETAIL.</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 100px; margin-top: 100px;">
+                <div class="reveal">
+                    <h4 style="font-size: 2rem; margin-bottom: 30px;">01. 完全個室</h4>
+                    <div class="visual-canvas"></div>
+                    <p>誰にも邪魔されない聖域。ベビーカー入室も標準対応。ここは、あなたがあなたに戻るための場所です。</p>
+                </div>
+                <div class="reveal">
+                    <h4 style="font-size: 2rem; margin-bottom: 30px;">02. 国家資格</h4>
+                    <div class="visual-canvas"></div>
+                    <p>石井院長がすべてのカウンセリングと施術を直接担当。解剖学に裏打ちされた論理的なアプローチ。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="hero-title reveal" style="opacity: 0.1;">PRICE.</h2>
+            <div style="margin-top: 100px;">
+                <div class="reveal" style="display: flex; justify-content: space-between; align-items: flex-end; padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <p style="font-size: 2rem;">全身オーダーメイド整体 <span style="font-size: 1rem; opacity: 0.4;">75min</span></p>
+                    <p class="hero-title" style="color:var(--accent); font-size: 8vw;">¥5,980</p>
+                </div>
+                <div class="reveal" style="display: flex; justify-content: space-between; align-items: flex-end; padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <p style="font-size: 2rem;">オーダーメイド整体 <span style="font-size: 1rem; opacity: 0.4;">45min</span></p>
+                    <p class="hero-title" style="color:var(--accent); font-size: 8vw;">¥2,980</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="theme-white">
+        <div class="container">
+            <h2 class="hero-title reveal">FAQ.</h2>
+            <div style="max-width: 800px; margin-top: 80px;">
+                <div class="reveal" style="margin-bottom: 80px;">
+                    <p style="font-weight: 900; color: var(--accent); margin-bottom: 20px;">Q. 駐車場はありますか？</p>
+                    <p style="font-size: 1.5rem;">A. 店舗前に2台分完備。お車での来院を歓迎します。</p>
+                </div>
+                <div class="reveal">
+                    <p style="font-weight: 900; color: var(--accent); margin-bottom: 20px;">Q. 健康保険は使えますか？</p>
+                    <p style="font-size: 1.5rem;">A. 当院は根本改善を目的とした自費施術専門です。最高の技術を提供するため、制限のある保険診療は行いません。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 20vh 8vw; background-color: #000;">
+        <div class="container">
+            <h2 class="hero-title reveal" style="opacity: 0.05; margin-bottom: 100px;">ACCESS.</h2>
+            <div class="reveal">
+                <p style="font-size: 2rem; margin-bottom: 20px;">〒981-3131<br>宮城県仙台市泉区上谷刈3-6-25</p>
+                <p style="opacity: 0.5;">泉中央駅 徒歩12分 / 10:00 - 20:00 / 日曜定休</p>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
