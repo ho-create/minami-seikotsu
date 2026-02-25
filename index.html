@@ -7,177 +7,185 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50; /* 誠実なネイビー */
-            --accent-color: #c0392b;  /* 専門性を感じさせる深い赤 */
-            --text-main: #333333;
-            --bg-soft: #f8f9fa;
-            --spacing-lg: 120px;
-            --spacing-md: 60px;
+            --primary: #2c3e50;
+            --accent: #c0392b;
+            --gray-light: #f4f4f4;
+            --text: #333;
         }
 
         body {
             margin: 0;
-            padding: 0;
             font-family: 'Noto Sans JP', sans-serif;
-            color: var(--text-main);
+            color: var(--text);
             line-height: 1.8;
-            letter-spacing: 0.05em;
-            background-color: #fff;
+            overflow-x: hidden;
+            word-break: break-word; /* 変な位置での改行を防止 */
         }
 
-        /* 1. 余白のデザイン：画面端に余裕を持たせる */
+        /* 改行コントロール用のクラス */
+        .keep-together {
+            display: inline-block; /* 単語の途中で改行させない */
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 25px;
         }
 
-        /* 2. 配置の洗練：ヘッダーのジャンプ率 */
+        /* --- Header --- */
         header {
-            padding: 80px 0;
-            border-bottom: 1px solid #eee;
+            padding: 40px 0;
+            text-align: left;
         }
-
         .brand-sub {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--primary-color);
-            letter-spacing: 0.4em;
-            margin-bottom: 16px;
+            font-size: 12px;
+            letter-spacing: 0.3em;
+            color: var(--primary);
             display: block;
+            margin-bottom: 5px;
         }
-
         h1 {
             font-family: 'Noto Serif JP', serif;
-            font-size: 42px;
-            font-weight: 700;
+            font-size: 28px;
             margin: 0;
-            color: var(--primary-color);
+            letter-spacing: 0.1em;
         }
 
-        /* 3. 写真がないからこその「空間」演出 */
-        .hero {
-            padding: var(--spacing-lg) 0;
+        /* --- Visual Area (写真の代わり) --- */
+        .visual-statement {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 100px 40px;
             text-align: center;
+            margin-bottom: 80px;
         }
-
-        .hero-copy {
+        .visual-statement h2 {
             font-family: 'Noto Serif JP', serif;
-            font-size: 32px;
+            font-size: clamp(20px, 5vw, 32px); /* 画面サイズで可変 */
             line-height: 1.6;
-            margin-bottom: 40px;
+            font-weight: 400;
         }
 
-        .hero-copy span {
-            display: inline-block;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 8px;
+        /* --- Content Sections --- */
+        section {
+            margin-bottom: 100px;
         }
-
-        /* 4. 整列の徹底：グリッドによる情報整理 */
         .section-title {
             font-family: 'Noto Serif JP', serif;
-            font-size: 28px;
-            margin-bottom: var(--spacing-md);
-            text-align: center;
-            position: relative;
+            font-size: 24px;
+            border-bottom: 1px solid var(--primary);
+            display: inline-block;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
         }
 
-        .grid-layout {
+        /* 文言：スマホでも読みやすく */
+        .desc-text {
+            font-size: 17px;
+            max-width: 700px;
+        }
+
+        /* 診療案内カード */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: var(--spacing-lg);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
-
         .card {
-            padding: 40px;
-            background: var(--bg-soft);
-            border-radius: 0; /* 丸めないのが今のトレンド */
-            border-left: 1px solid var(--primary-color);
+            background: var(--gray-light);
+            padding: 30px;
+            border-top: 4px solid var(--primary);
         }
-
         .card h3 {
-            font-size: 20px;
             margin-top: 0;
-            color: var(--primary-color);
+            font-family: 'Noto Serif JP', serif;
         }
 
-        .info-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .info-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-        }
-
+        /* --- Footer --- */
         footer {
-            padding: 80px 0;
-            background: var(--primary-color);
-            color: #fff;
+            background: #eee;
+            padding: 60px 0;
             text-align: center;
             font-size: 14px;
         }
 
-        /* レスポンシブ */
-        @media (max-width: 768px) {
-            h1 { font-size: 28px; }
-            .hero-copy { font-size: 22px; }
+        /* スマホ専用の微調整 */
+        @media (max-width: 600px) {
+            header { padding: 30px 0; }
+            .visual-statement { padding: 80px 20px; }
+            .desc-text { font-size: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <span class="brand-sub">IZUMICHUO MINAMI</span>
-            <h1>泉中央みなみ整骨院</h1>
-        </header>
+    <header class="container">
+        <span class="brand-sub">IZUMICHUO MINAMI</span>
+        <h1>泉中央みなみ整骨院</h1>
+    </header>
 
-        <main>
-            <section class="hero">
-                <p class="hero-copy">
-                    <span>「痛み」のその先にある、</span><br>
-                    <span>健やかな日常をデザインする。</span>
+    <div class="visual-statement">
+        <h2>
+            <span class="keep-together">静かなる情熱で、</span>
+            <span class="keep-together">身体の「声」を</span>
+            <span class="keep-together">書き換える。</span>
+        </h2>
+        <p style="margin-top:20px; opacity:0.8; font-size:14px;">
+            <span class="keep-together">確かな技術と</span>
+            <span class="keep-together">戦略的なケア。</span>
+        </p>
+    </div>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">私たちの想い</h2>
+            <div class="desc-text">
+                <p>
+                    <span class="keep-together">ただ痛みを取る</span>
+                    <span class="keep-together">だけではありません。</span>
+                    <span class="keep-together">私たちは、</span>
+                    <span class="keep-together">一人ひとりの</span>
+                    <span class="keep-together">ライフスタイルを</span>
+                    <span class="keep-together">深く理解し、</span>
+                    <span class="keep-together">最適な身体のバランスを</span>
+                    <span class="keep-together">再構築します。</span>
                 </p>
-                <p>私たちは、仙台市泉区で地域に根ざした誠実な施術を提供します。</p>
-            </section>
+                <p>
+                    <span class="keep-together">仙台市泉区の</span>
+                    <span class="keep-together">健やかな未来を、</span>
+                    <span class="keep-together">この場所から。</span>
+                </p>
+            </div>
+        </section>
 
+        <div style="background:var(--gray-light); padding:60px; text-align:center; margin-bottom:100px;">
+            <p style="font-family:'Noto Serif JP',serif; font-size:20px; color:var(--primary);">
+                「治す」の先にある、「動ける」喜びへ。
+            </p>
+        </div>
+
+        <section id="menu">
             <h2 class="section-title">診療内容</h2>
-            <div class="grid-layout">
+            <div class="grid">
                 <div class="card">
                     <h3>保険診療</h3>
-                    <p>日常生活やスポーツでのケガ（捻挫・打撲・肉離れなど）に対し、各種健康保険を適用した施術を行います。</p>
+                    <p>骨折、脱臼、捻挫、打撲など。日常のふとしたケガに、適切な処置を。</p>
                 </div>
                 <div class="card">
                     <h3>自費診療</h3>
-                    <p>慢性的な肩こり、腰痛、姿勢の悩みなど。一人ひとりの状態に合わせたオーダーメイドのケアを提案します。</p>
-                </div>
-                <div class="card">
-                    <h3>交通事故治療</h3>
-                    <p>むち打ちなど、交通事故特有の症状に対し、専門的な知識と技術で早期回復をサポートします。</p>
+                    <p>慢性的な不調や姿勢改善。時間をかけ、根本原因へアプローチします。</p>
                 </div>
             </div>
-
-            <h2 class="section-title">受付時間</h2>
-            <div class="card" style="margin-bottom: 100px;">
-                <ul class="info-list">
-                    <li><span>平日</span> <span>9:00 - 12:30 / 15:00 - 20:00</span></li>
-                    <li><span>土曜</span> <span>9:00 - 13:00</span></li>
-                    <li><span>日曜・祝日</span> <span>休診</span></li>
-                </ul>
-            </div>
-        </main>
-    </div>
+        </section>
+    </main>
 
     <footer>
-        <p>泉中央みなみ整骨院</p>
-        <p>〒981-3133 宮城県仙台市泉区泉中央</p>
-        <p style="margin-top: 20px; opacity: 0.6;">© 2026 2o1consulting</p>
+        <div class="container">
+            <p>泉中央みなみ整骨院</p>
+            <p>〒981-3133 宮城県仙台市泉区泉中央</p>
+            <p style="margin-top:20px; opacity:0.5;">Produced by 2o1consulting / HirokiOhi</p>
+        </div>
     </footer>
 
 </body>
